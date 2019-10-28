@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 
 public class JDBCConnection {
+
 	//Database Driver
 		private static final String driver = "com.mysql.jdbc.Driver";
 		//url connected to database

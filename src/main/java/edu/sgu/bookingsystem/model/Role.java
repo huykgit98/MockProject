@@ -1,22 +1,22 @@
 package edu.sgu.bookingsystem.model;
 public class Role {
-	private String id;
+	private long id;
 	private String name;
 	private String description;
 	public Role() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Role(String id, String name, String description) {
+	public Role(long id, String name, String description) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.description = description;
 	}
-	public String getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public String getName() {

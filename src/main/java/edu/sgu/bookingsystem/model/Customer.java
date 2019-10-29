@@ -1,17 +1,17 @@
 package edu.sgu.bookingsystem.model;
 
 public class Customer {
-	private int id;
+	private long id;
 	private String email;
 	private String phone;
 	private String password;
 	private String fullName;
 	private String address;
 	private int pageNumber;
-	public int getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public String getEmail() {
@@ -44,10 +44,10 @@ public class Customer {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public int getPageNumber() {
+	public long getPageNumber() {
 		return pageNumber;
 	}
-	public void setPageNumber(int pageNumber) {
+	public void setPageNumber(long pageNumber) {
 		this.pageNumber = pageNumber;
 	}
 	public Customer() {
@@ -59,11 +59,11 @@ public class Customer {
 		this.email = email;
 		this.password = password;
 	}
-	public Customer(int id) {
+	public Customer(long id) {
 		super();
 		this.id = id;
 	}
-	public Customer(int id, String password, String address) {
+	public Customer(long id, String password, String address) {
 		super();
 		this.id = id;
 		this.password = password;
@@ -77,7 +77,7 @@ public class Customer {
 		this.fullName = fullName;
 		this.address = address;
 	}
-	public Customer(int id, String email, String phone, String fullName, String address) {
+	public Customer(long id, String email, String phone, String fullName, String address) {
 		super();
 		this.id = id;
 		this.email = email;

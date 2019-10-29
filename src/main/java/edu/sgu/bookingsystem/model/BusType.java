@@ -1,10 +1,10 @@
 package edu.sgu.bookingsystem.model;
 
 public class BusType {
-	private int id;
+	private long id;
 	private String typeName;
 	private String description;
-	public BusType(int id, String typeName, String description) {
+	public BusType(long id, String typeName, String description) {
 		super();
 		this.id = id;
 		this.typeName = typeName;
@@ -18,10 +18,10 @@ public class BusType {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public int getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public String getTypeName() {

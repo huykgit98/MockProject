@@ -3,7 +3,7 @@ package edu.sgu.bookingsystem.model;
 public class User {
 	private String username;
 	private String password;
-	private int empID;
+	private long empID;
 	public String getUserName() {
 		return username;
 	}
@@ -16,10 +16,10 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public int getEmpID() {
+	public long getEmpID() {
 		return empID;
 	}
-	public void setEmpID(int empID) {
+	public void setEmpID(long empID) {
 		this.empID = empID;
 	}
 	public User() {
@@ -31,7 +31,7 @@ public class User {
 		this.username = userName;
 		this.password = password;
 	}
-	public User(String userName, String password, int empID) {
+	public User(String userName, String password, long empID) {
 		super();
 		this.username = userName;
 		this.password = password;

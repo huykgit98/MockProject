@@ -10,7 +10,7 @@ public class JDBCConnection {
 	//Database Driver
 		private static final String driver = "com.mysql.jdbc.Driver";
 		//url connected to database
-		private static final String url = "jdbc:mysql://localhost:3306/bookingbusticketsystem";
+		private static final String url = "jdbc:mysql://localhost:3306/bookingbusticketsystem1";
 		//Database username
 		private static final String username = "root";
 		//Database password
@@ -38,18 +38,20 @@ public class JDBCConnection {
 			return conn;
 		}
 		
-		public static void main(String[] args){
-			try{
-				Connection conn=JDBCConnection.getConnection();
-				if(conn!=null){
-					System.out.println("yes, ket noi thanh cong!");
-				}
-				else{
-					System.out.println("no, ket noi that cmn bai!");
-				}
-			}
-			catch(Exception e){
-				e.printStackTrace();
-			}
-		}
+		
+		
+//		public static void main(String[] args){
+//			try{
+//				Connection conn=JDBCConnection.getConnection();
+//				if(conn!=null){
+//					System.out.println("yes, ket noi thanh cong!");
+//				}
+//				else{
+//					System.out.println("no, ket noi that cmn bai!");
+//				}
+//			}
+//			catch(Exception e){
+//				e.printStackTrace();
+//			}
+//		}
 }

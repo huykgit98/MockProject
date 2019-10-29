@@ -4,17 +4,17 @@ import java.util.Date;
 import java.util.List;
 
 public class Schedule {
-	private int id;
+	private long id;
 	private List<Bus> listBus;
 	private Date timeStart;
-	private String startPlace;
-	private String finishPlace;
-	private String price;
+	private long startPlace;
+	private long finishPlace;
+	private double price;
 	public Schedule() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Schedule(int id, List<Bus> listBus, Date timeStart, String startPlace, String finishPlace, String price) {
+	public Schedule(long id, List<Bus> listBus, Date timeStart, long startPlace, long finishPlace, double price) {
 		super();
 		this.id = id;
 		this.listBus = listBus;
@@ -23,10 +23,10 @@ public class Schedule {
 		this.finishPlace = finishPlace;
 		this.price = price;
 	}
-	public int getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public List<Bus> getListBus() {
@@ -41,22 +41,22 @@ public class Schedule {
 	public void setTimeStart(Date timeStart) {
 		this.timeStart = timeStart;
 	}
-	public String getStartPlace() {
+	public long getStartPlace() {
 		return startPlace;
 	}
-	public void setStartPlace(String startPlace) {
+	public void setStartPlace(long startPlace) {
 		this.startPlace = startPlace;
 	}
-	public String getFinishPlace() {
+	public long getFinishPlace() {
 		return finishPlace;
 	}
-	public void setFinishPlace(String finishPlace) {
+	public void setFinishPlace(long finishPlace) {
 		this.finishPlace = finishPlace;
 	}
-	public String getPrice() {
+	public double getPrice() {
 		return price;
 	}
-	public void setPrice(String price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 	

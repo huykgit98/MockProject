@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 public class Booking {
-	private int bookingID;
+	private long bookingID;
 	private Schedule schedule;
 	private Customer customer;
 	private Date bookingDate;
@@ -16,10 +16,10 @@ public class Booking {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public int getBookingID() {
+	public long getBookingID() {
 		return bookingID;
 	}
-	public void setBookingID(int bookingID) {
+	public void setBookingID(long bookingID) {
 		this.bookingID = bookingID;
 	}
 	public Schedule getSchedule() {
@@ -64,7 +64,7 @@ public class Booking {
 	public void setSeatList(List<Integer> seatList) {
 		this.seatList = seatList;
 	}
-	public Booking(int bookingID, Schedule schedule, Customer customer, Date bookingDate, Date dateStart,
+	public Booking(long bookingID, Schedule schedule, Customer customer, Date bookingDate, Date dateStart,
 			String description, boolean status, List<Integer> seatList) {
 		super();
 		this.bookingID = bookingID;

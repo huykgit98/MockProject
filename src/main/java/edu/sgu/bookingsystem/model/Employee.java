@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Employee {
-	private int id;
+	private long id;
 	private String fullName;
 	private String address;
 	private String phone;
@@ -15,10 +15,10 @@ public class Employee {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public int getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public String getFullName() {

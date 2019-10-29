@@ -1,10 +1,10 @@
 package edu.sgu.bookingsystem.dao.impl;
 
-import edu.sgu.bookingsystem.dao.UserDao;
+import edu.sgu.bookingsystem.dao.UserDAO;
 import edu.sgu.bookingsystem.model.Employee;
 import edu.sgu.bookingsystem.model.User;
 
-public class UserDaoImpl implements UserDao {
+public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public Employee getEmployeeByAccount(User account) {

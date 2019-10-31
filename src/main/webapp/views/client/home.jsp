@@ -60,6 +60,7 @@
     <body>
         <div id="sb-site">
 		<%@ include file="header.jsp"%>
+		<br>
             <section id="body-top">
                 <div class="container">
                     <div class="row">

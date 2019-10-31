@@ -48,7 +48,7 @@
                   
                   <div onclick="document.href='#'" class="active col-lg-2 col-md-2 col-sm-4 col-xs-6 col-ms-12">
                       <div class="u-nav-left pull-left">
-                          <span class="sprite icon-user"></span>
+                          <span class="sprite icon-login-info"></span>
                       </div>
                       <div class="u-nav-right pull-left">
                           <h3 class="text-uppercase">Thông tin cá nhân</h3>
@@ -91,7 +91,7 @@
               <div id="user-infomations" class="container">
                   <div class="row">
                       
-                         <div class=" col-lg-6 col-md-6 col-sm-12 col-sm-12 col-xs-12">
+                         <div class=" col-lg-12 col-md-12 col-sm-12 col-sm-12 col-xs-12">
                                 <h3 class="text-uppercase bg-success">Thông tin cá nhân</h3>
                                 
                                <table class="table">
@@ -105,52 +105,60 @@
                                    </tr>
                                    <tr>
                                        <td>Điện thoại</td>
-                                       <td></td>
+                                       <td>0387134747</td>
                                    </tr>
                                    <tr>
-                                       <td>Giới tính</td>
-                                       <td></td>
-                                   </tr>
-                                   <tr>
-                                       <td>CMNN</td>
-                                       <td></td>
-                                   </tr>
-                                   <tr>
-                                       <td>Ngày cấp</td>
-                                       <td></td>
-                                   </tr>
-                                   <tr>
-                                       <td>Nơi cấp</td>
-                                       <td></td>
+                                       <td>Địa chỉ</td>
+                                       <td>asdasdasdsa</td>
                                    </tr>
                                </table>
                          </div>
                          
-                         <div class=" col-lg-6 col-md-6 col-sm-12 col-sm-12 col-xs-12">
-                               <h3 class="text-uppercase bg-success">Thông tin địa chỉ</h3>
-                                
-                               <table class="table">
-                                   <tr>
-                                       <td>Địa chỉ</td>
-                                       <td></td>
-                                   </tr>
-                                   <tr>
-                                       <td>Quận huyện</td>
-                                       <td></td>
-                                   </tr>
-                                   <tr>
-                                       <td>Thành phố</td>
-                                       <td></td>
-                                   </tr>
-                                  
-                               </table>
-                         </div>
+                         
                      
                   </div>
               </div>
-              
              
-              
+              <div id="user-infomations" class="container">
+                  <div class="row">
+                      
+                         <div class=" col-lg-12 col-md-12 col-sm-12 col-sm-12 col-xs-12">
+                                <h3 class="text-uppercase bg-success">Cập nhật thông tin cá nhân</h3>
+                              <form action="" id="forgot-pass">  
+                               <table class="table">
+                                 
+                                   <tr>
+                                       <td>Họ tên</td>
+                                       <td> <input type="text" name="" class="form-control" /></td>
+                                   </tr>
+                                    <tr>
+                                       <td>Địa chỉ email</td>
+                                       <td> <input type="text" name="" class="form-control"/></td>
+                                   </tr>
+                                   <tr>
+                                       <td>Điện thoại</td>
+                                       <td> <input type="text" name="" class="form-control" /></td>
+                                   </tr>
+                                   <tr>
+                                       <td>Địa chỉ</td>
+                                       <td> <input type="text" name="" class="form-control" /></td>
+                                   </tr>
+                                   <tr>
+                                       <td><button type="submit" class="btn btn-primary pull-left">
+                                  			<i class="fa fa-check"></i>Xác nhận</button>
+                                  		</td>
+                                       <td></td>
+                                   </tr>
+                                   
+                                   
+                               </table>
+                               </form>
+                         </div>
+                         
+                         
+                     
+                  </div>
+              </div>
             </section>
             
             
@@ -158,7 +166,7 @@
             <footer>
                
                 <div id="footer-img">
-                     <img src="img/bg-top-footer.png" class="center-block">
+                     <img src="${pageContext.request.contextPath}/resources/client/img/bg-top-footer.png" class="center-block">
                 </div>
                 <div id="footer-body">
                     <div class="f-body-wrap container">

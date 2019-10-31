@@ -12,11 +12,18 @@ public class CustomerServiceImpl implements CustomerService {
 	
 	@Override
 	public Customer getCustomer(Customer customer) {
+		//customerdao = new CustomerDAOImpl();
 		return customerdao.getCustomer(customer);
 	}
 
 	@Override
 	public int insertCustomer(Customer customer) {
+	//	customerdao = new CustomerDAOImpl();
+		if(customerdao.insertCustomer(customer)==1)
+		{
+			customerdao = new CustomerDAOImpl();
+			return 1;
+		}
 		if(customerdao.insertCustomer(customer)==-1)
 		{
 			return -1;
@@ -25,15 +32,18 @@ public class CustomerServiceImpl implements CustomerService {
 			{
 				return -2;
 			}
-		if(customerdao.insertCustomer(customer)==1)
-		{
-			return 1;
-		}
+	
 		return 0;
 	}
 
 	@Override
 	public int updateCustomer(Customer customer) {
+		//customerdao = new CustomerDAOImpl();
+		if(customerdao.updateCustomer(customer)==1)
+		{
+			customerdao = new CustomerDAOImpl();
+			return 1;
+		}
 		if(customerdao.updateCustomer(customer)==-1)
 		{
 			return -1;
@@ -42,10 +52,7 @@ public class CustomerServiceImpl implements CustomerService {
 			{
 				return -2;
 			}
-		if(customerdao.updateCustomer(customer)==1)
-		{
-			return 1;
-		}
+	
 		return 0;
 	}
 

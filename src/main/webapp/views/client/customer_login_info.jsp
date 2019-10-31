@@ -36,7 +36,7 @@
                           <small class="text-muted">Đặt vé dễ dàng</small>
                       </div>
                   </div>
-                  <div onclick="document.href='#'" class="bg-gray col-lg-2 col-md-2 col-sm-4 col-xs-6 col-ms-12">
+                  <div onclick="document.href='#'" class=" active col-lg-2 col-md-2 col-sm-4 col-xs-6 col-ms-12">
                       <div class="u-nav-left pull-left">
                           <span class="sprite icon-login-info"></span>
                       </div>
@@ -46,9 +46,9 @@
                       </div>
                   </div>
                   
-                  <div onclick="document.href='#'" class="active col-lg-2 col-md-2 col-sm-4 col-xs-6 col-ms-12">
+                  <div onclick="document.href='#'" class="bg-gray col-lg-2 col-md-2 col-sm-4 col-xs-6 col-ms-12">
                       <div class="u-nav-left pull-left">
-                          <span class="sprite icon-user"></span>
+                          <span class="sprite icon-login-info"></span>
                       </div>
                       <div class="u-nav-right pull-left">
                           <h3 class="text-uppercase">Thông tin cá nhân</h3>
@@ -92,37 +92,21 @@
                   <div class="row">
                       
                          <div class=" col-lg-12 col-md-12 col-sm-12 col-sm-12 col-xs-12">
-                                <h3 class="text-uppercase bg-success">Thông tin cá nhân</h3>
+                                <h3 class="text-uppercase bg-success">Thông tin đăng nhập</h3>
                                 
                                <table class="table">
-                                   <tr>
-                                       <td>Họ tên</td>
-                                       <td>Nguyễn văn A</td>
-                                   </tr>
+                                 
                                    <tr>
                                        <td>Địa chỉ email</td>
                                        <td>nguyena@gmail.com</td>
-                                   </tr>
-                                   <tr>
-                                       <td>Điện thoại</td>
                                        <td></td>
                                    </tr>
-                                   <tr>
-                                       <td>Giới tính</td>
-                                       <td></td>
+                                    <tr>
+                                       <td>Mật khẩu</td>
+                                       <td>*******</td>
+                                       <td><a href="#">Đổi Mật khẩu</a></td>
                                    </tr>
-                                   <tr>
-                                       <td>CMNN</td>
-                                       <td></td>
-                                   </tr>
-                                   <tr>
-                                       <td>Ngày cấp</td>
-                                       <td></td>
-                                   </tr>
-                                   <tr>
-                                       <td>Nơi cấp</td>
-                                       <td></td>
-                                   </tr>
+                                   
                                </table>
                          </div>
                          
@@ -130,7 +114,43 @@
                      
                   </div>
               </div>
-              
+              <div id="user-infomations" class="container">
+                  <div class="row">
+                      
+                         <div class=" col-lg-12 col-md-12 col-sm-12 col-sm-12 col-xs-12">
+                                <h3 class="text-uppercase bg-success">Đổi mật khẩu</h3>
+                              <form action="" id="forgot-pass">  
+                               <table class="table">
+                                 
+                                   <tr>
+                                       <td>Mật khẩu cũ</td>
+                                       <td> <input type="password" name="" class="form-control" placeholder="Nhập mật khẩu cũ"/></td>
+                                   </tr>
+                                    <tr>
+                                       <td>Mật khẩu mới</td>
+                                       <td> <input type="password" name="" class="form-control" placeholder="Nhập mật khẩu mới"/></td>
+                                   </tr>
+                                   <tr>
+                                       <td>Nhập lại mật khẩu mới</td>
+                                       <td> <input type="password" name="" class="form-control" placeholder="Nhập lại mật khẩu mới"/></td>
+                                   </tr>
+                                   
+                                   <tr>
+                                       <td><button type="submit" class="btn btn-primary pull-left">
+                                  			<i class="fa fa-check"></i>Xác nhận</button>
+                                  		</td>
+                                       <td></td>
+                                   </tr>
+                                   
+                                   
+                               </table>
+                               </form>
+                         </div>
+                         
+                         
+                     
+                  </div>
+              </div>
              
               
             </section>
@@ -140,7 +160,7 @@
             <footer>
                
                 <div id="footer-img">
-                     <img src="img/bg-top-footer.png" class="center-block">
+                     <img src="${pageContext.request.contextPath}/resources/client/img/bg-top-footer.png" class="center-block">
                 </div>
                 <div id="footer-body">
                     <div class="f-body-wrap container">

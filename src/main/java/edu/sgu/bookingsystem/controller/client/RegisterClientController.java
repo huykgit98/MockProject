@@ -78,7 +78,8 @@ public class RegisterClientController extends HttpServlet {
 							}
 
 							request.getSession().removeAttribute("errorReg");
-						} else {
+						} 
+						else {
 							request.getSession().setAttribute("errorReg",
 									"Internal Server Error, Please try again later.");
 						}
@@ -92,6 +93,45 @@ public class RegisterClientController extends HttpServlet {
 
 		}
 	}
+//	public static void main(String[] args) {
+//		CustomerService cus = new CustomerServiceImpl();
+//			
+//			String email = "tewqr3233st@gmail.com";
+//			String phoneNum = "99121299";
+//
+//			String password = MD5Encrypt.md5("123456");
+//
+//			String fullName ="test fullname";
+//			String address = "test";
+//
+//			Customer customer = new Customer(email, phoneNum, password, fullName, address);
+//
+//
+//			
+//
+//				int result = cus.insertCustomer(customer);
+//
+//				if (result == -1) {
+//					System.out.println("email ton tai");
+//				} else {
+//					if (result == -2) {
+//						System.out.println("sdt ton tai");
+//
+//					} else {
+//						if (result == 1) {
+//							System.out.println("them thanh cong!");
+//							cus = new CustomerServiceImpl();
+//							customer = cus.getCustomer(customer);
+//						} 
+//						else {
+//							System.out.println("loi cmnr");
+//
+//						}
+//					}
+//				}
+//
+//		
+//	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub

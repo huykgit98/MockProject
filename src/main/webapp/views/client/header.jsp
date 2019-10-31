@@ -81,6 +81,7 @@
                             		<i class="fa fa-user"></i> Chào, <% out.print(session.getAttribute("customername"));%>
                             	</a>
 							    <div class="dropdown-content" >
+								  <a href="${pageContext.request.contextPath}/views/client/booking_ticket.jsp" ><i class="fa fa-ticket"></i> Đặt vé</a>								  								  
 								  <a href="${pageContext.request.contextPath}/views/client/customer_login_info.jsp" ><i class="fa fa-user-secret"></i> Thông tin đăng nhập</a>
 								  <a href="${pageContext.request.contextPath}/views/client/customer_info.jsp" ><i class="fa fa-info"></i> Thông tin cá nhân</a>
 							      <a href="${pageContext.request.contextPath}/LoginClienController?param=logout"><i class="fa fa-sign-out"></i> Đăng xuất</a>

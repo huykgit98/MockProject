@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -25,20 +26,72 @@
         <link rel="stylesheet" href="plugins/sidebar/slidebars.css">
         <!-- end add slidebar menu script -->
         <script type="text/javascript" src="js/theme.js"></script>
+        
+        
+        <!-- style huy -->
+      	<style>.dropdown-content {
+		  display: none;
+		  position: absolute;
+		  background-color: #ff6600;
+		  min-width: 160px;
+		  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+		  z-index: 1;
+		  
+		}
+		
+		.dropdown-content a {
+		  color: black;
+		  padding: 12px 16px;
+		  text-decoration: none;
+		  display: block;
+		}
+		
+		.dropdown-content a:hover {background-color: #b34700}
+		
+		.dropdown:hover .dropdown-content {
+		  display: block;
+		}
+		
+		.dropdown:hover .dropbtn {
+		  background-color: #3e8e41;
+		}
+		</style>
     </head>
     <body>
         <div id="sb-site">
             <header>
                 <div id="top">
                     <div class="container">
-                        
+                        <%
+						if (session.getAttribute("customername") == null) {
+						%> 
                         <div class="support"><i class="fa fa-phone"></i> Tổng đài hỗ trợ: <span>0902 1818 52</span></div>
+                       
                         <ul>
-                            <li><a href="#">EN</a></li>
-                            <li><a href="#">Đăng nhập</a></li>
-                            <li><a href="#">Đăng ký</a></li>
+                            <li><a href="/MockProject/views/client/login.jsp">Đăng nhập</a></li>
+                            <li><a href="/MockProject/views/client/register.jsp">Đăng ký</a></li>
                             
                         </ul>
+                        <%
+						} else {
+						%>
+				       <div class="support"><i class="fa fa-phone"></i> Tổng đài hỗ trợ: <span>0902 1818 52</span></div>
+                        <ul>
+                            <li class="dropdown">
+                            	<a href="#" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                            		<i class="fa fa-user"></i> Chào, <% out.print(session.getAttribute("customername"));%>
+                            	</a>
+							    <div class="dropdown-content" >
+								  <a href="#" ><i class="fa fa-info"></i> Thông tin cá nhân</a>
+							      <a href="/MockProject/LoginClienController?param=logout"><i class="fa fa-sign-out"></i> Đăng xuất</a>
+								  </div>
+                            </li>
+                            
+                        </ul>
+                        
+						<%
+						}
+						%>
                     </div>
                 </div>
                 <div id="header-body">
@@ -486,7 +539,7 @@
                                 <a href="">Hơn 20 khách hàng</a>
                                 
                             </h5>
-                            <p>Phương trang phục vụ hơn 20 triệu khách hàng trên toàn quốc</p>
+                            <p>Sai Gon University phục vụ hơn 20 triệu khách hàng trên toàn quốc</p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-ms-12">
@@ -496,7 +549,7 @@
                                 <a href="">Hơn 20 khách hàng</a>
                                
                             </h5>
-                             <p>Phương trang phục vụ hơn 20 triệu khách hàng trên toàn quốc</p>
+                             <p>Sai Gon University phục vụ hơn 20 triệu khách hàng trên toàn quốc</p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-ms-12">
@@ -506,14 +559,14 @@
                                 <a href="">Hơn 20 khách hàng</a>
                                
                             </h5>
-                             <p>Phương trang phục vụ hơn 20 triệu khách hàng trên toàn quốc</p>
+                             <p>Sai Gon University phục vụ hơn 20 triệu khách hàng trên toàn quốc</p>
                         </div>
                     </div>
                 </div>
             </section>
             
             <section id="body-service" class="container">
-                <h3 class="heading">Các dịch vụ của phương trang</h3>
+                <h3 class="heading">Các dịch vụ của Sai Gon University</h3>
                 <div class="row">
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-ms-6">
                         <div class="service-items">
@@ -673,7 +726,7 @@
                     
                      <div id="info" class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-ms-12">
                          <div id="info-c">
-                             <p>Công Ty CP Xe khách phương trang EAF</p>
+                             <p>Công Ty CP Xe khách Sai Gon University EAF</p>
                              <p>Địa chỉ: 80 Trần Hưng Đạo, Q1, TP Hồ Chí Minh.</p>
                              <p>Điện thoại: 0902 181852 - Fax: 0902 181852</p>
                              <p>Website: <a href="#">viralwave.vn</a> - Email: info@viralwave.vn </p>

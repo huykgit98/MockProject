@@ -44,10 +44,10 @@ public class Customer {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public long getPageNumber() {
+	public int getPageNumber() {
 		return pageNumber;
 	}
-	public void setPageNumber(long pageNumber) {
+	public void setPageNumber(int pageNumber) {
 		this.pageNumber = pageNumber;
 	}
 	public Customer() {

@@ -2,7 +2,6 @@ package edu.sgu.bookingsystem.connect;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 
 
 public class JDBCConnection {
@@ -10,7 +9,7 @@ public class JDBCConnection {
 	//Database Driver
 		private static final String driver = "com.mysql.jdbc.Driver";
 		//url connected to database
-		private static final String url = "jdbc:mysql://localhost:3306/bookingbusticketsystem1";
+		private static final String url = "jdbc:mysql://localhost:3306/mockproject";
 		//Database username
 		private static final String username = "root";
 		//Database password

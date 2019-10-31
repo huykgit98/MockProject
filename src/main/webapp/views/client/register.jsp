@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -30,8 +31,8 @@
                         <div class="support"><i class="fa fa-phone"></i> Tổng đài hỗ trợ: <span>0902 1818 52</span></div>
                         <ul>
                             <li><a href="#">EN</a></li>
-                            <li><a href="#">Đăng nhập</a></li>
-                            <li><a href="#">Đăng ký</a></li>
+                            <li><a href="/MockProject/views/client/login.jsp">Đăng nhập</a></li>
+                            <li><a href="/MockProject/views/client/register.jsp">Đăng ký</a></li>
                             
                         </ul>
                     </div>
@@ -105,93 +106,73 @@
                         
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-ms-12">
                             <div id="register-form-wrapper" class="border padding10 clearfix">
-                               <form action="" id="register-form" class="">
-                                   <h3 class="text-uppercase" >Đăng ký</h3>
+                       		    <c:url value="/RegisterClientController?param=register" var="register"/>       
+                               <form id="register-form" class="" method="POST"
+					action="${register}">
+                                   <h1 class="text-uppercase" >Đăng ký thành viên</h1>
                                    <p class="text-muted">
-                                       <small>Lưu ý: Không hỗ trợ hotmail và outlook email<br>
-                                       Chỉ với 1 tài khoản Futabus ID, tham gia được tất cả các chương trình Futabus Lines
-                                       </small> 
+                                       <%
+											if ((String) session.getAttribute("errorReg") != null) {
+										%>
+										<h4 style="color: red">
+											<%
+												out.print(session.getAttribute("errorReg"));
+												session.removeAttribute("errorReg");
+											%>
+										</h4>
+										<%
+											}
+										%>
                                        
                                    </p>
+                                   <br>
                                    <div class="form-group">
                                        <label for="">Địa chỉ email *</label>
-                                       <input type="email" name="" class="form-control"/>
+                                       <input type="email" name="email" class="form-control" placeholder="abc@gmail.com" required/>
                                    </div>
                                    <div class="form-group">
                                        
                                        <div class="row">
                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-ms-12">
                                                <label for="">Mật khẩu *</label>
-                                                <input type="password" value="123456" name="" class="form-control"/>
+                                                <input type="password" value="" name="password" class="form-control" required/>
                                             </div>
                                              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-ms-12">
-                                                <label for="">Nhắc lại mật khẩu *</label>
-                                                <input type="password" value="123456" name="" class="form-control"/>
+                                                <label for="">Xác nhận lại mật khẩu *</label>
+                                                <input type="password" value="" name="repassword" class="form-control" required/>
                                             </div>
                                        </div>
                                       
                                    </div>
-                                   <h3 class="text-uppercase">Thông tin khác</h3>
-                                   <div class="form-group">
-                                        <div class="row">
-                                           <div class="col-lg-3 col-md-3 col-sm-6 col-xs-3 col-ms-12">
-                                               <label for="">Ngày sinh *</label>
-                                               <select name="" id="" class="form-control">
-                                                   <option>01</option>
-                                                   <option>01</option>
-                                                   <option>01</option>
-                                               </select>
-                                            </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-3 col-ms-12">
-                                                <label for="">Tháng sinh *</label>
-                                                <select name="" id="" class="form-control">
-                                                   <option>Tháng 01</option>
-                                                   <option>Tháng 01</option>
-                                                   <option>Tháng 01</option>
-                                               </select>
-                                            </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-3 col-ms-12">
-                                                <label for="">Năm sinh *</label>
-                                                <select name="" id="" class="form-control">
-                                                   <option>Năm 2015</option>
-                                                   <option>Năm 2015</option>
-                                                   <option>Năm 2015</option>
-                                                   <option>Năm 2015</option>
-                                                  
-                                               </select>
-                                            </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-3 col-ms-12">
-                                               <p>&nbsp;</p>
-                                               <label for="">
-                                                   <input type="radio" name="gender"/>
-                                                   Nữ
-                                               </label>
-                                                 <label for="">
-                                                   <input type="radio" name="gender" class=""/>
-                                                   Nam
-                                               </label>
-                                            </div>
-                                       </div>
-                                   </div>
+                                   
+                                   <h2 class="text-uppercase">Thông tin khác</h3>
+                                 
                                    <div class="form-group">
                                        <div class="row">
                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-ms-12">
-                                               <label for="">Số di động*</label>
-                                                <input type="phone" name="" class="form-control"/>
+                                               <label for="">Họ Tên *</label>
+                                                <input type="text" name="fullname" class="form-control" required/>
                                             </div>
                                              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-ms-12">
-                                                <label for="">Số CMNN *</label>
-                                                <input type="text" value="" name="" class="form-control"/>
+                                                <label for="">Địa Chỉ </label>
+                                                <input type="text" value="" name="address" class="form-control"/>
                                             </div>
                                        </div>
-                                      
+                                       <br>
+                                      <div class="row">
+                                           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-ms-12">
+                                               <label for="">Số di động *</label>
+                                                <input type="text" name="phonenumber" class="form-control" required/>
+                                            </div>
+
+                                       </div>
                                    </div>
                                     <div class="form-group clearfix">
                                         <button class="btn btn-primary pull-right">HOÀN TẤT</button>
                                        
                                     </div>
-                                     <p class="clearfix"> <small class="pull-right">* Mục bắt buộc </small> </p>
-                                     <p class="text-center" >Nếu bạn đã có FUTA ID. CLick <a href="#">đây</a> để đăng nhập</p>
+                                     <p class="clearfix"> <small class="pull-right" style="color:red;">* Mục bắt buộc </small> </p>
+                                     <p class="text-center" >Nếu bạn đã có FUTA ID. CLick <a href="/MockProject/views/client/register.jsp">đây</a> để đăng nhập</p>
                                </form>
                             </div>
                         </div>

@@ -1,11 +1,12 @@
 package edu.sgu.bookingsystem.dao.impl;
 
-import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+
+import org.mindrot.jbcrypt.BCrypt;
 
 import edu.sgu.bookingsystem.connect.JDBCConnection;
 import edu.sgu.bookingsystem.dao.CustomerDAO;
@@ -103,6 +104,7 @@ public class CustomerDAOImpl implements CustomerDAO{
 
 		return 0;
 	}
+	
 
 	@Override
 	public int updateCustomer(Customer customer) {
@@ -232,18 +234,25 @@ public class CustomerDAOImpl implements CustomerDAO{
 		}
 	}
 	
-	public static void main(String[] args){
-
-		CustomerDAO cusdao = new CustomerDAOImpl();
-	/*	Customer customer = new Customer("asd@email.com","0391231231", "123456", "Hoàng Nguyễn Huy", "dia chi cung cung");
-		Customer customer = new Customer();
-		customer.setId(1);
-		System.out.println("ket qua: " +cusdao.getCustomer(customer).getFullName());
-	*/
-		/*
-		Customer customer1 = new Customer("huy@email.com","0381231231", "123456", "Hoàng Huy", "chac chan thanh cong");
-		System.out.println("ket qua insert customer: " +cusdao.insertCustomer(customer1));
-		*/
-		
+//	public static void main(String[] args){
+//
+//		CustomerDAO cusdao = new CustomerDAOImpl();
+//	/*	Customer customer = new Customer("asd@email.com","0391231231", "123456", "Hoàng Nguyễn Huy", "dia chi cung cung");
+//		Customer customer = new Customer();
+//		customer.setId(1);
+//		System.out.println("ket qua: " +cusdao.getCustomer(customer).getFullName());
+//	*/
+//		/*
+//		Customer customer1 = new Customer("huy@email.com","0381231231", "123456", "Hoàng Huy", "chac chan thanh cong");
+//		System.out.println("ket qua insert customer: " +cusdao.insertCustomer(customer1));
+//		*/
+//		
+//	}
+	
+	
+	public static void main(String[] args) {
+		String password = "123456";
+		String hash = BCrypt.hashpw(password, BCrypt.gensalt(12));
+		System.out.println("BCrypt hash: " + hash);
 	}
 }

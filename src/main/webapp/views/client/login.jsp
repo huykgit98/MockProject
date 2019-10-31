@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,8 +8,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <title>FUTA</title>
-        <link rel="profile" href="http://gmpg.org/xfn/11">
-        <link rel="pingback" href="http://vinpearlsafari.com/xmlrpc.php">
+    
         <!--[if lt IE 9]>
         <script src="http://vinpearlsafari.com/wp-content/themes/vinsafari/js/html5.js"></script>
         <![endif]-->
@@ -30,8 +30,8 @@
                         <div class="support"><i class="fa fa-phone"></i> Tổng đài hỗ trợ: <span>0902 1818 52</span></div>
                         <ul>
                             <li><a href="#">EN</a></li>
-                            <li><a href="#">Đăng nhập</a></li>
-                            <li><a href="#">Đăng ký</a></li>
+                            <li><a href="/MockProject/views/client/login.jsp">Đăng nhập</a></li>
+                            <li><a href="/MockProject/views/client/register.jsp">Đăng ký</a></li>
                             
                         </ul>
                     </div>
@@ -102,14 +102,28 @@
                             <div id="login-form-left" class="border clearfix">
                                  <div  class="col-lg-8 col-md-8 col-sm-12 col-xs-12 col-ms-12 col-lg-offset-2 col-md-offset-2">
                                      <h3 class="text-uppercase text-center">Tôi đã đăng ký tài khoản</h3>
-                                     <form action="" class="form-horizontal">
+                                     <br>
+                                     <%
+									if ((String) session.getAttribute("error") != null) {
+									%>
+									<h4 style="color: red">
+										<%
+											out.print((String) session.getAttribute("error"));
+										 	session.removeAttribute("error");
+										%>
+									</h4>
+									<%
+										}
+									%>
+		                                     <c:url value="/LoginClienController?param=login" var="login"/>       
+                               <form id="register-form" class="form-horizontal" method="POST" action="${login}">
                                          <div class="form-group">
                                              <label for="">Địa chỉ email*</label>
-                                             <input type="text" name="" class="form-control" placeholder="abc@gmail.com"/>
+                                             <input type="text" name="username" class="form-control" placeholder="abc@gmail.com" required/>
                                          </div>
                                          <div class="form-group">
                                              <label for="">Mật khẩu*</label>
-                                             <input type="password" name="" class="form-control" value="123456"/>
+                                             <input type="password" name="password" class="form-control" value="" required/>
                                          </div>
                                          <div class="form-group">
                                              <a href="#">Quên mật khẩu?</a>
@@ -120,7 +134,7 @@
                                                  <input type="checkbox">
                                                  Ghi nhớ
                                              </label>
-                                             <button class="btn btn-primary pull-right">
+                                             <button class="btn btn-primary pull-right" type="submit">
                                                  Đăng nhập
                                              </button>
                                          </div>
@@ -135,7 +149,7 @@
                                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 col-ms-12 col-lg-offset-2 col-md-offset-2">
                                      <h3 class="text-uppercase text-center">Bạn là khách hàng mới?</h3>
                                      <p class="text-center">
-                                         <a href="#" class="btn btn-primary">Đăng ký</a>
+                                         <a href="/MockProject/views/client/register.jsp" class="btn btn-primary">Đăng ký</a>
                                      </p>
                                      <p class="text-muted text-center">
                                          Chỉ với 1 tài khoản Futabus ID, tham gia được tất cả các chương trình của Futa Bus Lines

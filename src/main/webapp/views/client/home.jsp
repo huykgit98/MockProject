@@ -7,25 +7,25 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <title>FUTA</title>
+        <title>Trang chủ</title>
         <link rel="profile" href="http://gmpg.org/xfn/11">
         <link rel="pingback" href="http://vinpearlsafari.com/xmlrpc.php">
         <!--[if lt IE 9]>
         <script src="http://vinpearlsafari.com/wp-content/themes/vinsafari/js/html5.js"></script>
         <![endif]-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-        <link rel='stylesheet' id='theme-style-css'  href='css/style.css' type='text/css' media='all' />
-        <link rel='stylesheet' id=''  href='plugins/flexslider/flexslider.css' type='text/css' media='all' />
-        <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-        <script type="text/javascript" src="js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="plugins/flexslider/jquery.flexslider-min.js"></script>
-        <script type="text/javascript" src="plugins/sliderTabs/jquery.sliderTabs.js"></script>
-        <link rel="stylesheet" href="plugins/sliderTabs/styles/jquery.sliderTabs.css">
+        <link rel='stylesheet' id='theme-style-css'  href='${pageContext.request.contextPath}/resources/client/css/style.css' type='text/css' media='all' />
+        <link rel='stylesheet' id=''  href='${pageContext.request.contextPath}/resources/client/plugins/flexslider/flexslider.css' type='text/css' media='all' />
+        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/client/js/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/client/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/client/plugins/flexslider/jquery.flexslider-min.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/client/plugins/sliderTabs/jquery.sliderTabs.js"></script>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/client/plugins/sliderTabs/styles/jquery.sliderTabs.css">
         <!-- add slidebar menu script -->
-        <script type="text/javascript" src="plugins/sidebar/slidebars.js"></script>
-        <link rel="stylesheet" href="plugins/sidebar/slidebars.css">
+        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/client/plugins/sidebar/slidebars.js"></script>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/client/plugins/sidebar/slidebars.css">
         <!-- end add slidebar menu script -->
-        <script type="text/javascript" src="js/theme.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/client/js/theme.js"></script>
         
         
         <!-- style huy -->
@@ -59,77 +59,7 @@
     </head>
     <body>
         <div id="sb-site">
-            <header>
-                <div id="top">
-                    <div class="container">
-                        <%
-						if (session.getAttribute("customername") == null) {
-						%> 
-                        <div class="support"><i class="fa fa-phone"></i> Tổng đài hỗ trợ: <span>0902 1818 52</span></div>
-                       
-                        <ul>
-                            <li><a href="/MockProject/views/client/login.jsp">Đăng nhập</a></li>
-                            <li><a href="/MockProject/views/client/register.jsp">Đăng ký</a></li>
-                            
-                        </ul>
-                        <%
-						} else {
-						%>
-				       <div class="support"><i class="fa fa-phone"></i> Tổng đài hỗ trợ: <span>0902 1818 52</span></div>
-                        <ul>
-                            <li class="dropdown">
-                            	<a href="#" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                            		<i class="fa fa-user"></i> Chào, <% out.print(session.getAttribute("customername"));%>
-                            	</a>
-							    <div class="dropdown-content" >
-								  <a href="#" ><i class="fa fa-info"></i> Thông tin cá nhân</a>
-							      <a href="/MockProject/LoginClienController?param=logout"><i class="fa fa-sign-out"></i> Đăng xuất</a>
-								  </div>
-                            </li>
-                            
-                        </ul>
-                        
-						<%
-						}
-						%>
-                    </div>
-                </div>
-                <div id="header-body">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-ms-12">
-                                <h1 id="logo">
-                                    <a href=""><img src="img/logo.png"/></a>
-                                </h1>
-                                
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-ms-12">
-                                <div class="navbar-header">
-                                    <button type="button" class="navbar-toggle collapsed sb-toggle-left" data-toggle="collapse" data-target="" aria-expanded="false">
-                                        <span class="sr-only">Toggle navigation</span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                    </button>
-                                    <a href="/" class="navbar-brand">Trang chủ</a>
-                                </div>
-                                  
-                                <nav id="main-nav" class="collapse navbar-collapse clearfix">
-                                    <ul>
-                                        <li><a href="#">Khuyến mãi</a></li>
-                                        <li><a href="">Lịch trình</a></li>
-                                        <li><a href="">Liên hệ</a></li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-            </header>
-            
-            
-
+		<%@ include file="header.jsp"%>
             <section id="body-top">
                 <div class="container">
                     <div class="row">
@@ -210,14 +140,14 @@
                                 
                             </div>
                             <a href="#">
-                                <img src="img/banner-recruitment.jpg" alt="">
+                                <img src="${pageContext.request.contextPath}/resources/client/img/banner-recruitment.jpg" alt="">
                             </a>
                         </div>
                         <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 col-ms-12">
                             <div id="slider-home" class="flexslider">
                                 <ul class="slides">
-                                    <li><a href=""><img src="/img/slide.jpg" alt=""></a></li>
-                                    <li><a href=""><img src="/img/slide.jpg" alt=""></a></li>
+                                    <li><a href=""><img src="${pageContext.request.contextPath}/resources/client/img/slide.jpg" alt=""></a></li>
+                                    <li><a href=""><img src="${pageContext.request.contextPath}/resources/client/img/slide.jpg" alt=""></a></li>
                                     
                                 </ul>
                             </div>
@@ -236,18 +166,18 @@
                             <div class="col-lg-5 col-md-5 col-sm-5  col-xs-6 col-ms-12  ">
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-ms-6">
-                                        <a href="#"><img src="img/android.png"></a>
+                                        <a href="#"><img src="${pageContext.request.contextPath}/resources/client/img/android.png"></a>
                                         
                                     </div>
                                     <div class="relative col-lg-6 col-md-6 col-sm-6 col-xs-6 col-ms-6">
-                                        <a href="#"><img  src="img/ios.png"></a>
+                                        <a href="#"><img  src="${pageContext.request.contextPath}/resources/client/img/ios.png"></a>
                                     </div>
                                 </div>
                                 
                                 
                             </div>
                             <div class="col-lg-3 col-md-3 col-sm-3 hidden-xs">
-                                <img id="ico-phone" src="img/mobile-icon.png"></img>
+                                <img id="ico-phone" src="${pageContext.request.contextPath}/resources/client/img/mobile-icon.png"></img>
                             </div>
                         </div>
                     </div>
@@ -283,7 +213,7 @@
                                             <table class="table">
                                                 <tr>
                                                     <td>Sài gòn</td>
-                                                    <td><img src="img/go.jpg"></td>
+                                                    <td><img src="${pageContext.request.contextPath}/resources/client/img/go.jpg"></td>
                                                     <td>Hà nội</td>
                                                     <td>900.000 đ/vé</td>
                                                     <td>
@@ -293,7 +223,7 @@
                                                 </tr>
                                                  <tr>
                                                     <td>Sài gòn</td>
-                                                    <td><img src="img/go.jpg"></td>
+                                                    <td><img src="${pageContext.request.contextPath}/resources/client/img/go.jpg"></td>
                                                     <td>Hà nội</td>
                                                     <td>900.000 đ/vé</td>
                                                     <td>
@@ -303,7 +233,7 @@
                                                 </tr>
                                                  <tr>
                                                     <td>Sài gòn</td>
-                                                    <td><img src="img/go.jpg"></td>
+                                                    <td><img src="${pageContext.request.contextPath}/resources/client/img/go.jpg"></td>
                                                     <td>Hà nội</td>
                                                     <td>900.000 đ/vé</td>
                                                     <td>
@@ -313,7 +243,7 @@
                                                 </tr>
                                                  <tr>
                                                     <td>Sài gòn</td>
-                                                    <td><img src="img/go.jpg"></td>
+                                                    <td><img src="${pageContext.request.contextPath}/resources/client/img/go.jpg"></td>
                                                     <td>Hà nội</td>
                                                     <td>900.000 đ/vé</td>
                                                     <td>
@@ -323,7 +253,7 @@
                                                 </tr>
                                                  <tr>
                                                     <td>Sài gòn</td>
-                                                    <td><img src="img/go.jpg"></td>
+                                                    <td><img src="${pageContext.request.contextPath}/resources/client/img/go.jpg"></td>
                                                     <td>Hà nội</td>
                                                     <td>900.000 đ/vé</td>
                                                     <td>
@@ -333,7 +263,7 @@
                                                 </tr>
                                                  <tr>
                                                     <td>Sài gòn</td>
-                                                    <td><img src="img/go.jpg"></td>
+                                                    <td><img src="${pageContext.request.contextPath}/resources/client/img/go.jpg"></td>
                                                     <td>Hà nội</td>
                                                     <td>900.000 đ/vé</td>
                                                     <td>
@@ -343,7 +273,7 @@
                                                 </tr>
                                                  <tr>
                                                     <td>Sài gòn</td>
-                                                    <td><img src="img/go.jpg"></td>
+                                                    <td><img src="${pageContext.request.contextPath}/resources/client/img/go.jpg"></td>
                                                     <td>Hà nội</td>
                                                     <td>900.000 đ/vé</td>
                                                     <td>
@@ -353,7 +283,7 @@
                                                 </tr>
                                                  <tr>
                                                     <td>Sài gòn</td>
-                                                    <td><img src="img/go.jpg"></td>
+                                                    <td><img src="${pageContext.request.contextPath}/resources/client/img/go.jpg"></td>
                                                     <td>Hà nội</td>
                                                     <td>900.000 đ/vé</td>
                                                     <td>
@@ -363,7 +293,7 @@
                                                 </tr>
                                                  <tr>
                                                     <td>Sài gòn</td>
-                                                    <td><img src="img/go.jpg"></td>
+                                                    <td><img src="${pageContext.request.contextPath}/resources/client/img/go.jpg"></td>
                                                     <td>Hà nội</td>
                                                     <td>900.000 đ/vé</td>
                                                     <td>
@@ -373,7 +303,7 @@
                                                 </tr>
                                                  <tr>
                                                     <td>Sài gòn</td>
-                                                    <td><img src="img/go.jpg"></td>
+                                                    <td><img src="${pageContext.request.contextPath}/resources/client/img/go.jpg"></td>
                                                     <td>Hà nội</td>
                                                     <td>900.000 đ/vé</td>
                                                     <td>
@@ -383,7 +313,7 @@
                                                 </tr>
                                                  <tr>
                                                     <td>Sài gòn</td>
-                                                    <td><img src="img/go.jpg"></td>
+                                                    <td><img src="${pageContext.request.contextPath}/resources/client/img/go.jpg"></td>
                                                     <td>Hà nội</td>
                                                     <td>900.000 đ/vé</td>
                                                     <td>
@@ -398,7 +328,7 @@
                                             <table class="table">
                                                 <tr>
                                                     <td>Sài gòn</td>
-                                                    <td><img src="img/go.jpg"></td>
+                                                    <td><img src="${pageContext.request.contextPath}/resources/client/img/go.jpg"></td>
                                                     <td>Hà nội</td>
                                                     <td>900.000 đ/vé</td>
                                                     <td>
@@ -408,7 +338,7 @@
                                                 </tr>
                                                  <tr>
                                                     <td>Sài gòn</td>
-                                                    <td><img src="img/go.jpg"></td>
+                                                    <td><img src="${pageContext.request.contextPath}/resources/client/img/go.jpg"></td>
                                                     <td>Hà nội</td>
                                                     <td>900.000 đ/vé</td>
                                                     <td>
@@ -418,7 +348,7 @@
                                                 </tr>
                                                  <tr>
                                                     <td>Sài gòn</td>
-                                                    <td><img src="img/go.jpg"></td>
+                                                    <td><img src="${pageContext.request.contextPath}/resources/client/img/go.jpg"></td>
                                                     <td>Hà nội</td>
                                                     <td>900.000 đ/vé</td>
                                                     <td>
@@ -428,7 +358,7 @@
                                                 </tr>
                                                  <tr>
                                                     <td>Sài gòn</td>
-                                                    <td><img src="img/go.jpg"></td>
+                                                    <td><img src="${pageContext.request.contextPath}/resources/client/img/go.jpg"></td>
                                                     <td>Hà nội</td>
                                                     <td>900.000 đ/vé</td>
                                                     <td>
@@ -438,7 +368,7 @@
                                                 </tr>
                                                  <tr>
                                                     <td>Sài gòn</td>
-                                                    <td><img src="img/go.jpg"></td>
+                                                    <td><img src="${pageContext.request.contextPath}/resources/client/img/go.jpg"></td>
                                                     <td>Hà nội</td>
                                                     <td>900.000 đ/vé</td>
                                                     <td>
@@ -448,7 +378,7 @@
                                                 </tr>
                                                  <tr>
                                                     <td>Sài gòn</td>
-                                                    <td><img src="img/go.jpg"></td>
+                                                    <td><img src="${pageContext.request.contextPath}/resources/client/img/go.jpg"></td>
                                                     <td>Hà nội</td>
                                                     <td>900.000 đ/vé</td>
                                                     <td>
@@ -458,7 +388,7 @@
                                                 </tr>
                                                  <tr>
                                                     <td>Sài gòn</td>
-                                                    <td><img src="img/go.jpg"></td>
+                                                    <td><img src="${pageContext.request.contextPath}/resources/client/img/go.jpg"></td>
                                                     <td>Hà nội</td>
                                                     <td>900.000 đ/vé</td>
                                                     <td>
@@ -468,7 +398,7 @@
                                                 </tr>
                                                  <tr>
                                                     <td>Sài gòn</td>
-                                                    <td><img src="img/go.jpg"></td>
+                                                    <td><img src="${pageContext.request.contextPath}/resources/client/img/go.jpg"></td>
                                                     <td>Hà nội</td>
                                                     <td>900.000 đ/vé</td>
                                                     <td>
@@ -478,7 +408,7 @@
                                                 </tr>
                                                  <tr>
                                                     <td>Sài gòn</td>
-                                                    <td><img src="img/go.jpg"></td>
+                                                    <td><img src="${pageContext.request.contextPath}/resources/client/img/go.jpg"></td>
                                                     <td>Hà nội</td>
                                                     <td>900.000 đ/vé</td>
                                                     <td>
@@ -488,7 +418,7 @@
                                                 </tr>
                                                  <tr>
                                                     <td>Sài gòn</td>
-                                                    <td><img src="img/go.jpg"></td>
+                                                    <td><img src="${pageContext.request.contextPath}/resources/client/img/go.jpg"></td>
                                                     <td>Hà nội</td>
                                                     <td>900.000 đ/vé</td>
                                                     <td>
@@ -498,7 +428,7 @@
                                                 </tr>
                                                  <tr>
                                                     <td>Sài gòn</td>
-                                                    <td><img src="img/go.jpg"></td>
+                                                    <td><img src="${pageContext.request.contextPath}/resources/client/img/go.jpg"></td>
                                                     <td>Hà nội</td>
                                                     <td>900.000 đ/vé</td>
                                                     <td>
@@ -523,7 +453,7 @@
                     <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 col-ms-12">
                         <h3 class="marker"><i class="fa fa-map-marker"></i> Bản đồ tuyến</h3>
                         <a href="#">
-                            <img src="img/maps.jpg">
+                            <img src="${pageContext.request.contextPath}/resources/client/img/maps.jpg">
                         </a>
                         
                     </div>
@@ -534,7 +464,7 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-ms-12">
                         <div class="items-news text-center">
-                            <img src="img/customer.png"/>
+                            <img src="${pageContext.request.contextPath}/resources/client/img/customer.png"/>
                             <h5>
                                 <a href="">Hơn 20 khách hàng</a>
                                 
@@ -544,7 +474,7 @@
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-ms-12">
                         <div class="items-news text-center">
-                            <img src="img/home.png"/>
+                            <img src="${pageContext.request.contextPath}/resources/client/img/home.png"/>
                             <h5>
                                 <a href="">Hơn 20 khách hàng</a>
                                
@@ -554,7 +484,7 @@
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-ms-12">
                         <div class="items-news text-center">
-                            <img src="img/tech.png"/>
+                            <img src="${pageContext.request.contextPath}/resources/client/img/tech.png"/>
                             <h5>
                                 <a href="">Hơn 20 khách hàng</a>
                                
@@ -572,7 +502,7 @@
                         <div class="service-items">
                             <a href="#">
                                 <h5>Vận chuyển hàng hóa</h5>
-                                <img src="img/service.jpg">
+                                <img src="${pageContext.request.contextPath}/resources/client/img/service.jpg">
                             </a>    
                         </div>
                     </div>
@@ -580,7 +510,7 @@
                         <div class="service-items">
                             <a href="#">
                                 <h5>Vận chuyển hành khách</h5>
-                                <img src="img/service.jpg">
+                                <img src="${pageContext.request.contextPath}/resources/client/img/service.jpg">
                             </a>    
                         </div>
                     </div>
@@ -588,7 +518,7 @@
                         <div class="service-items">
                             <a href="#">
                                 <h5>Khách sạn</h5>
-                                <img src="img/service.jpg">
+                                <img src="${pageContext.request.contextPath}/resources/client/img/service.jpg">
                             </a>    
                         </div>
                     </div>
@@ -596,7 +526,7 @@
                         <div class="service-items">
                             <a href="#">
                                 <h5>Trạm dừng</h5>
-                                <img src="img/service.jpg">
+                                <img src="${pageContext.request.contextPath}/resources/client/img/service.jpg">
                             </a>    
                         </div>
                     </div>
@@ -687,7 +617,7 @@
             </div>
         </div>
         <div id="footer-img">
-             <img src="img/bg-top-footer.png" class="center-block">
+             <img src="${pageContext.request.contextPath}/resources/client/img/bg-top-footer.png" class="center-block">
         </div>
         <div id="footer-body">
             <div class="f-body-wrap container">

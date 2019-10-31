@@ -6,69 +6,24 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <title>FUTA</title>
+        <title>Thông tin đăng nhập</title>
         <link rel="profile" href="http://gmpg.org/xfn/11">
         <link rel="pingback" href="http://vinpearlsafari.com/xmlrpc.php">
         <!--[if lt IE 9]>
         <script src="http://vinpearlsafari.com/wp-content/themes/vinsafari/js/html5.js"></script>
         <![endif]-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-        <link rel='stylesheet' id='theme-style-css'  href='css/style.css' type='text/css' media='all' />
-        <link rel='stylesheet' id=''  href='plugins/flexslider/flexslider.css' type='text/css' media='all' />
-        <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-        <script type="text/javascript" src="js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="plugins/flexslider/jquery.flexslider-min.js"></script>
-        <script type="text/javascript" src="js/theme.js"></script>
+        <link rel='stylesheet' id='theme-style-css'  href='${pageContext.request.contextPath}/resources/client/css/style.css' type='text/css' media='all' />
+        <link rel='stylesheet' id=''  href='${pageContext.request.contextPath}/resources/client/plugins/flexslider/flexslider.css' type='text/css' media='all' />
+        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/client/js/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/client/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/client/plugins/flexslider/jquery.flexslider-min.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/client/js/theme.js"></script>
     </head>
     <body>
         <div id="page">
             <!-- header -->
-            <header>
-                <div id="top">
-                    <div class="container">
-                        
-                        <div class="support"><i class="fa fa-phone"></i> Tổng đài hỗ trợ: <span>0902 1818 52</span></div>
-                        <ul>
-                            <li><a href="#">EN</a></li>
-                            <li><a href="#">Đăng nhập</a></li>
-                            <li><a href="#">Đăng ký</a></li>
-                            
-                        </ul>
-                    </div>
-                </div>
-                <div id="header-body">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-ms-12">
-                                <h1 id="logo">
-                                    <a href=""><img src="img/logo.png"/></a>
-                                </h1>
-                                
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-ms-12">
-                                <div class="navbar-header">
-                                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav" aria-expanded="false">
-                                        <span class="sr-only">Toggle navigation</span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                    </button>
-                                    <a href="/" class="navbar-brand">Trang chủ</a>
-                                </div>
-                                  
-                                <nav id="main-nav" class="collapse navbar-collapse clearfix">
-                                    <ul>
-                                        <li><a href="#">Khuyến mãi</a></li>
-                                        <li><a href="">Lịch trình</a></li>
-                                        <li><a href="">Liên hệ</a></li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-            </header>
+            <%@ include file="header.jsp"%>
             
             <section id="body-content">
               <div id="" class="user-nav active container">
@@ -81,7 +36,25 @@
                           <small class="text-muted">Đặt vé dễ dàng</small>
                       </div>
                   </div>
+                  <div onclick="document.href='#'" class="bg-gray col-lg-2 col-md-2 col-sm-4 col-xs-6 col-ms-12">
+                      <div class="u-nav-left pull-left">
+                          <span class="sprite icon-login-info"></span>
+                      </div>
+                      <div class="u-nav-right pull-left ">
+                          <h3 class="text-uppercase">Thông tin đăng nhập</h3>
+                          <small class="text-muted"> Quản lý thông tin</small>
+                      </div>
+                  </div>
                   
+                  <div onclick="document.href='#'" class="active col-lg-2 col-md-2 col-sm-4 col-xs-6 col-ms-12">
+                      <div class="u-nav-left pull-left">
+                          <span class="sprite icon-user"></span>
+                      </div>
+                      <div class="u-nav-right pull-left">
+                          <h3 class="text-uppercase">Thông tin cá nhân</h3>
+                          <small class="text-muted">Cập nhật thông tin</small>
+                      </div>
+                  </div>
                   <div onclick="document.href='#'" class="bg-gray col-lg-2 col-md-2 col-sm-4 col-xs-6 col-ms-12">
                       <div class="u-nav-left pull-left">
                           <span class="sprite icon-history-ticket"></span>
@@ -112,31 +85,13 @@
                       </div>
                   </div>
                   
-                  <div onclick="document.href='#'" class="bg-gray col-lg-2 col-md-2 col-sm-4 col-xs-6 col-ms-12">
-                      <div class="u-nav-left pull-left">
-                          <span class="sprite icon-login-info"></span>
-                      </div>
-                      <div class="u-nav-right pull-left ">
-                          <h3 class="text-uppercase">Thông tin đăng nhập</h3>
-                          <small class="text-muted"> Quản lý thông tin</small>
-                      </div>
-                  </div>
                   
-                  <div onclick="document.href='#'" class="active col-lg-2 col-md-2 col-sm-4 col-xs-6 col-ms-12">
-                      <div class="u-nav-left pull-left">
-                          <span class="sprite icon-user"></span>
-                      </div>
-                      <div class="u-nav-right pull-left">
-                          <h3 class="text-uppercase">Thông tin cá nhân</h3>
-                          <small class="text-muted">Cập nhật thông tin</small>
-                      </div>
-                  </div>
               </div>
               
               <div id="user-infomations" class="container">
                   <div class="row">
                       
-                         <div class=" col-lg-6 col-md-6 col-sm-12 col-sm-12 col-xs-12">
+                         <div class=" col-lg-12 col-md-12 col-sm-12 col-sm-12 col-xs-12">
                                 <h3 class="text-uppercase bg-success">Thông tin cá nhân</h3>
                                 
                                <table class="table">
@@ -171,25 +126,7 @@
                                </table>
                          </div>
                          
-                         <div class=" col-lg-6 col-md-6 col-sm-12 col-sm-12 col-xs-12">
-                               <h3 class="text-uppercase bg-success">Thông tin địa chỉ</h3>
-                                
-                               <table class="table">
-                                   <tr>
-                                       <td>Địa chỉ</td>
-                                       <td></td>
-                                   </tr>
-                                   <tr>
-                                       <td>Quận huyện</td>
-                                       <td></td>
-                                   </tr>
-                                   <tr>
-                                       <td>Thành phố</td>
-                                       <td></td>
-                                   </tr>
-                                  
-                               </table>
-                         </div>
+                         
                      
                   </div>
               </div>

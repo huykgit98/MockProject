@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	<%@page import="edu.sgu.bookingsystem.model.Customer"%>
+	
 <!DOCTYPE html>
 <html>
     <head>
@@ -93,25 +96,32 @@
                       
                          <div class=" col-lg-12 col-md-12 col-sm-12 col-sm-12 col-xs-12">
                                 <h3 class="text-uppercase bg-success">Thông tin cá nhân</h3>
-                                
+                               <%
+							if (request.getAttribute("customerinfo") != null) {
+								Customer customer = (Customer) request.getAttribute("customerinfo");
+						%> 
                                <table class="table">
                                    <tr>
                                        <td>Họ tên</td>
-                                       <td>Nguyễn văn A</td>
+                                       <td><%=customer.getFullName()%></td>
                                    </tr>
                                    <tr>
                                        <td>Địa chỉ email</td>
-                                       <td>nguyena@gmail.com</td>
+                                       <td><%=customer.getEmail()%></td>
                                    </tr>
                                    <tr>
                                        <td>Điện thoại</td>
-                                       <td>0387134747</td>
+                                       <td><%=customer.getPhone()%></td>
                                    </tr>
                                    <tr>
                                        <td>Địa chỉ</td>
-                                       <td>asdasdasdsa</td>
+                                       <td><%=customer.getAddress()%></td>
                                    </tr>
                                </table>
+                                   <%
+							}
+						%>
+                             
                          </div>
                          
                          
@@ -119,33 +129,63 @@
                   </div>
               </div>
              
+				<div id="user-infomations" class="container">
+                  <div class="row"> 
+                         <div class=" col-lg-12 col-md-12 col-sm-12 col-sm-12 col-xs-12">
+           
+             				<button class="btn btn-primary " onclick="hideShowForm()">Chỉnh sửa thông tin cá nhân</button>
+						</div>
+					</div>
+				</div>
+			<br>
+             <hr>
+             
               <div id="user-infomations" class="container">
-                  <div class="row">
-                      
+                  <div class="row" id="myDIV" style="display:none;">
+                      <%
+							if ((String) session.getAttribute("errorUpd") != null) {
+						%>
+						<h4 style="color: red">
+							<%
+								out.print(session.getAttribute("errorUpd"));
+					 			session.removeAttribute("errorUpd");
+							%>
+						</h4>
+						<%
+							}
+						%>
+
+						<%
+							if (request.getAttribute("customerinfo") != null) {
+								Customer customer = (Customer) request.getAttribute("customerinfo");
+						%>
                          <div class=" col-lg-12 col-md-12 col-sm-12 col-sm-12 col-xs-12">
                                 <h3 class="text-uppercase bg-success">Cập nhật thông tin cá nhân</h3>
-                              <form action="" id="forgot-pass">  
+                              <form method="POST" action="CustomerInfoController?param=changeInfoCustomer" id="forgot-pass">  
                                <table class="table">
                                  
                                    <tr>
                                        <td>Họ tên</td>
-                                       <td> <input type="text" name="" class="form-control" /></td>
+                                       <td> <input type="text" name="fullname" value="<%=customer.getFullName()%>" class="form-control" /></td>
                                    </tr>
                                     <tr>
                                        <td>Địa chỉ email</td>
-                                       <td> <input type="text" name="" class="form-control"/></td>
+                                       <td> <input type="text" name="email" value="<%=customer.getEmail()%>" class="form-control"/></td>
                                    </tr>
                                    <tr>
                                        <td>Điện thoại</td>
-                                       <td> <input type="text" name="" class="form-control" /></td>
+                                       <td> <input type="text" name="phonenumber" value="<%=customer.getPhone()%>" class="form-control" /></td>
                                    </tr>
                                    <tr>
                                        <td>Địa chỉ</td>
-                                       <td> <input type="text" name="" class="form-control" /></td>
+                                       <td> <input type="text" name="address" value="<%=customer.getAddress()%>" class="form-control" /></td>
                                    </tr>
+                                   <%
+							}
+						%>
                                    <tr>
-                                       <td><button type="submit" class="btn btn-primary pull-left">
-                                  			<i class="fa fa-check"></i>Xác nhận</button>
+                                       <td><button type="submit" class="btn pull-left" style="background-color:#1a53ff; color:white;">
+                                  			<i class="fa fa-check"></i> Xác nhận</button>
                                   		</td>
                                        <td></td>
                                    </tr>
@@ -160,8 +200,17 @@
                   </div>
               </div>
             </section>
-            
-            
+            <!-- hide/show form update customer -->
+            <script>
+			function hideShowForm() {
+			  var x = document.getElementById("myDIV");
+			  if (x.style.display === "none") {
+			    x.style.display = "block";
+			  } else {
+			    x.style.display = "none";
+			  }
+			}
+			</script>
             <!-- footer -->
             <footer>
                

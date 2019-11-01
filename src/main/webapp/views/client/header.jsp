@@ -59,10 +59,11 @@
     </head>
 <body>
 <header>
+
                 <div id="top">
                     <div class="container">
                         <%
-						if (session.getAttribute("customername") == null) {
+						if (session.getAttribute("customername") == null ) {
 						%> 
                         <div class="support"><i class="fa fa-phone"></i> Tổng đài hỗ trợ: <span>0902 1818 52</span></div>
                        
@@ -81,9 +82,12 @@
                             		<i class="fa fa-user"></i> Chào, <% out.print(session.getAttribute("customername"));%>
                             	</a>
 							    <div class="dropdown-content" >
-								  <a href="${pageContext.request.contextPath}/views/client/booking_ticket.jsp" ><i class="fa fa-ticket"></i> Đặt vé</a>								  								  
-								  <a href="${pageContext.request.contextPath}/views/client/customer_login_info.jsp" ><i class="fa fa-user-secret"></i> Thông tin đăng nhập</a>
-								  <a href="${pageContext.request.contextPath}/views/client/customer_info.jsp" ><i class="fa fa-info"></i> Thông tin cá nhân</a>
+								  <a href="${pageContext.request.contextPath}/views/client/booking_ticket.jsp" ><i class="fa fa-ticket"></i> Đặt vé</a>								 
+                                  <c:url value="/LoginInfoClientController?param=infoCustomer" var="customerlogininfo"/>  								 
+								  <a href="${customerlogininfo}" ><i class="fa fa-user-secret"></i> Thông tin đăng nhập</a>
+		                          <c:url value="/CustomerInfoController?param=infoCustomer" var="customerinfo"/>       
+								  <a href="${customerinfo}" ><i class="fa fa-info"></i> Thông tin cá nhân</a>
+								  <a href="${pageContext.request.contextPath}/views/client/booked_ticket.jsp" ><i class="fa fa-ticket"></i> Lịch sử đặt vé</a>								  								  								   								  
 							      <a href="${pageContext.request.contextPath}/LoginClienController?param=logout"><i class="fa fa-sign-out"></i> Đăng xuất</a>
 								  </div>
                             </li>
@@ -128,5 +132,6 @@
                     
                 </div>
             </header>
+            <br>
 </body>
 </html>

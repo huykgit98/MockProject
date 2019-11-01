@@ -76,6 +76,7 @@ public class RegisterClientController extends HttpServlet {
 								session.setAttribute("email", customer.getEmail());
 								session.setAttribute("password", customer.getPassword());
 							}
+//							response.sendRedirect("/MockProject/views/client/home.jsp");
 
 							request.getSession().removeAttribute("errorReg");
 						} 
@@ -89,6 +90,8 @@ public class RegisterClientController extends HttpServlet {
 
 			if (request.getParameter("button") == null) {
 				response.sendRedirect("/MockProject/views/client/register.jsp");
+			//	response.sendRedirect("/MockProject/views/client/home.jsp");
+
 			}
 
 		}

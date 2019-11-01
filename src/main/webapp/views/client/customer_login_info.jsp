@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+		<%@page import="edu.sgu.bookingsystem.model.Customer"%>
+	
 <!DOCTYPE html>
 <html>
     <head>
@@ -93,12 +95,15 @@
                       
                          <div class=" col-lg-12 col-md-12 col-sm-12 col-sm-12 col-xs-12">
                                 <h3 class="text-uppercase bg-success">Thông tin đăng nhập</h3>
-                                
+                                 <%
+							if (request.getAttribute("customerinfo") != null) {
+								Customer customer = (Customer) request.getAttribute("customerinfo");
+						%> 
                                <table class="table">
                                  
                                    <tr>
                                        <td>Địa chỉ email</td>
-                                       <td>nguyena@gmail.com</td>
+                                       <td><%=customer.getEmail()%></td>
                                        <td></td>
                                    </tr>
                                     <tr>
@@ -108,6 +113,9 @@
                                    </tr>
                                    
                                </table>
+                                  <%
+							}
+						%>
                          </div>
                          
                          
@@ -119,20 +127,37 @@
                       
                          <div class=" col-lg-12 col-md-12 col-sm-12 col-sm-12 col-xs-12">
                                 <h3 class="text-uppercase bg-success">Đổi mật khẩu</h3>
+                              <%
+							if ((String) session.getAttribute("errorUpd") != null) {
+						%>
+						<h4 style="color: red">
+							<%
+								out.print(session.getAttribute("errorUpd"));
+					 			session.removeAttribute("errorUpd");
+							%>
+						</h4>
+						<%
+							}
+						%>
+
+						<%
+							if (request.getAttribute("customerinfo") != null) {
+								Customer customer = (Customer) request.getAttribute("customerinfo");
+						%>
                               <form action="" id="forgot-pass">  
                                <table class="table">
                                  
                                    <tr>
                                        <td>Mật khẩu cũ</td>
-                                       <td> <input type="password" name="" class="form-control" placeholder="Nhập mật khẩu cũ"/></td>
+                                       <td> <input type="password" value="<%=customer.getPassword()%>"  name="password" class="form-control" placeholder="Nhập mật khẩu cũ"/></td>
                                    </tr>
                                     <tr>
                                        <td>Mật khẩu mới</td>
-                                       <td> <input type="password" name="" class="form-control" placeholder="Nhập mật khẩu mới"/></td>
+                                       <td> <input type="password" value="<%=customer.getPassword()%>"  name="repassword" class="form-control" placeholder="Nhập mật khẩu mới"/></td>
                                    </tr>
                                    <tr>
                                        <td>Nhập lại mật khẩu mới</td>
-                                       <td> <input type="password" name="" class="form-control" placeholder="Nhập lại mật khẩu mới"/></td>
+                                       <td> <input type="password" value="<%=customer.getPassword()%>"  name="repassword" class="form-control" placeholder="Nhập lại mật khẩu mới"/></td>
                                    </tr>
                                    
                                    <tr>
@@ -145,6 +170,9 @@
                                    
                                </table>
                                </form>
+                               <%
+							}
+						%>
                          </div>
                          
                          

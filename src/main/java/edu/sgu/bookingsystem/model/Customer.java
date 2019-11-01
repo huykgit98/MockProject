@@ -85,6 +85,17 @@ public class Customer {
 		this.fullName = fullName;
 		this.address = address;
 	}
+	public Customer(String email2, String password2, long customer_id) {
+		this.email = email2;
+		this.password = password2;
+		this.id = customer_id;
+	}
+	public Customer(String email2, long customer_id) {
+		this.email = email2;
+		this.id = customer_id;	}
+	public Customer(String email2) {
+		this.email= email2;
+	}
 	
 	
 }

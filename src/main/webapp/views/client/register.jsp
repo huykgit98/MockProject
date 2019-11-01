@@ -21,7 +21,7 @@
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/client/plugins/flexslider/jquery.flexslider-min.js"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/client/js/theme.js"></script>
     </head>
-    <body>
+    <body >
         <div id="page">
             <!-- header -->
             <%@ include file="header.jsp"%>

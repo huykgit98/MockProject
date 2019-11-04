@@ -22,7 +22,7 @@ public class LoginClienController extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	
+								
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if ("logout".equalsIgnoreCase(request.getParameter("param"))) {
 			HttpSession session = request.getSession();

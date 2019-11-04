@@ -108,8 +108,8 @@
                                    </tr>
                                     <tr>
                                        <td>Mật khẩu</td>
-                                       <td>*******</td>
-                                       <td><a href="#">Đổi Mật khẩu</a></td>
+                                       <td>******</td>
+                                       <td><a href="#" onclick="hideShowForm()">Đổi Mật khẩu</a></td>
                                    </tr>
                                    
                                </table>
@@ -123,7 +123,7 @@
                   </div>
               </div>
               <div id="user-infomations" class="container">
-                  <div class="row">
+                  <div class="row" id="myDIV" style="display:none;">
                       
                          <div class=" col-lg-12 col-md-12 col-sm-12 col-sm-12 col-xs-12">
                                 <h3 class="text-uppercase bg-success">Đổi mật khẩu</h3>
@@ -131,6 +131,11 @@
 							if ((String) session.getAttribute("errorUpd") != null) {
 						%>
 						<h4 style="color: red">
+						<script>
+						  var x = document.getElementById("myDIV");
+						    x.style.display = "block";
+		
+						</script>
 							<%
 								out.print(session.getAttribute("errorUpd"));
 					 			session.removeAttribute("errorUpd");
@@ -144,20 +149,20 @@
 							if (request.getAttribute("customerinfo") != null) {
 								Customer customer = (Customer) request.getAttribute("customerinfo");
 						%>
-                              <form action="" id="forgot-pass">  
+                              <form action="LoginInfoClientController?param=infoCustomer" method="POST" id="forgot-pass">  
                                <table class="table">
                                  
                                    <tr>
                                        <td>Mật khẩu cũ</td>
-                                       <td> <input type="password" value="<%=customer.getPassword()%>"  name="password" class="form-control" placeholder="Nhập mật khẩu cũ"/></td>
+                                       <td> <input type="password" value=""  name="old_password" class="form-control" placeholder="Nhập mật khẩu cũ"/></td>
                                    </tr>
                                     <tr>
                                        <td>Mật khẩu mới</td>
-                                       <td> <input type="password" value="<%=customer.getPassword()%>"  name="repassword" class="form-control" placeholder="Nhập mật khẩu mới"/></td>
+                                       <td> <input type="password" value=""  name="password" class="form-control" placeholder="Nhập mật khẩu mới"/></td>
                                    </tr>
                                    <tr>
-                                       <td>Nhập lại mật khẩu mới</td>
-                                       <td> <input type="password" value="<%=customer.getPassword()%>"  name="repassword" class="form-control" placeholder="Nhập lại mật khẩu mới"/></td>
+                                       <td>Xác nhận lại mật khẩu mới</td>
+                                       <td> <input type="password" value=""  name="repassword" class="form-control" placeholder="Nhập lại mật khẩu mới"/></td>
                                    </tr>
                                    
                                    <tr>
@@ -182,7 +187,17 @@
              
               
             </section>
-            
+             <!-- hide/show form update customer -->
+            <script>
+			function hideShowForm() {
+			  var x = document.getElementById("myDIV");
+			  if (x.style.display === "none") {
+			    x.style.display = "block";
+			  } else {
+			    x.style.display = "none";
+			  }
+			}
+			</script>
             
             <!-- footer -->
             <footer>

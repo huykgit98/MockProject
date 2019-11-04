@@ -250,9 +250,9 @@ public class CustomerDAOImpl implements CustomerDAO{
 //	}
 	
 	
-	public static void main(String[] args) {
-		String password = "123456";
-		String hash = BCrypt.hashpw(password, BCrypt.gensalt(12));
-		System.out.println("BCrypt hash: " + hash);
-	}
+//	public static void main(String[] args) {
+//		String password = "123456";
+//		String hash = BCrypt.hashpw(password, BCrypt.gensalt(12));
+//		System.out.println("BCrypt hash: " + hash);
+//	}
 }

@@ -1,5 +1,5 @@
 package edu.sgu.bookingsystem.service;
 
-public interface UserService {
+public interface TimeService {
 
 }

@@ -82,7 +82,8 @@
                             		<i class="fa fa-user"></i> Chào, <% out.print(session.getAttribute("customername"));%>
                             	</a>
 							    <div class="dropdown-content" >
-								  <a href="${pageContext.request.contextPath}/views/client/booking_ticket.jsp" ><i class="fa fa-ticket"></i> Đặt vé</a>								 
+                                  <c:url value="/BookingTicketController" var="bookingticket"/>  								 
+								  <a href="${bookingticket}" ><i class="fa fa-ticket"></i> Đặt vé</a>								 
                                   <c:url value="/LoginInfoClientController?param=infoCustomer" var="customerlogininfo"/>  								 
 								  <a href="${customerlogininfo}" ><i class="fa fa-user-secret"></i> Thông tin đăng nhập</a>
 		                          <c:url value="/CustomerInfoController?param=infoCustomer" var="customerinfo"/>       

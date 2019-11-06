@@ -142,7 +142,6 @@
                           <td>Giờ</td>
                           <td>Tổng tiền</td>
                           <td>Ngày đặt</td>
-                          <td>Thanh toán</td>
                           <td>Trạng thái</td>
                           <td>Tác vụ</td>
                       </tr>
@@ -155,8 +154,19 @@
                           <td>10hAM</td>
                           <td>100.000 đ</td>
                           <td>08-10-2010</td>
-                          <td>Chờ thanh toán</td>
-                          <td></td>
+                          <td>đã đặt</td>
+                          <td><a href="#" title="hủy vé đặt"><i class="fa fa-close" "></i></a></td>
+                      </tr>
+                      <tr>
+                          <td>1</td>
+                          <td class="code">SDGS</td>
+                          <td>1</td>
+                          <td>SG - Đà Lạt</td>
+                          <td>10-10-2010</td>
+                          <td>10hAM</td>
+                          <td>100.000 đ</td>
+                          <td>08-10-2010</td>
+                          <td>đã đặt</td>
                           <td></td>
                       </tr>
                       <tr>
@@ -168,21 +178,7 @@
                           <td>10hAM</td>
                           <td>100.000 đ</td>
                           <td>08-10-2010</td>
-                          <td>Chờ thanh toán</td>
-                          <td></td>
-                          <td></td>
-                      </tr>
-                      <tr>
-                          <td>1</td>
-                          <td class="code">SDGS</td>
-                          <td>1</td>
-                          <td>SG - Đà Lạt</td>
-                          <td>10-10-2010</td>
-                          <td>10hAM</td>
-                          <td>100.000 đ</td>
-                          <td>08-10-2010</td>
-                          <td>Chờ thanh toán</td>
-                          <td></td>
+                          <td>đã hủy</td>
                           <td></td>
                       </tr>
                       <tr>
@@ -194,8 +190,7 @@
                           <td>10hAM</td>
                           <td>100.000 đ</td>
                           <td>08-10-2010</td>
-                          <td>Chờ thanh toán</td>
-                          <td></td>
+                          <td>đã hủy</td>
                           <td></td>
                       </tr>
                      

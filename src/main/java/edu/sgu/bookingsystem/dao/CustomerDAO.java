@@ -11,7 +11,5 @@ public interface CustomerDAO {
 
 	int updateCustomer(Customer customer);
 	
-	List<Customer> getAllCustomer(int page);
 	
-	List<Customer> searchCustomer(String search, int page);
 }

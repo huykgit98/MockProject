@@ -161,17 +161,7 @@ public class CustomerDAOImpl implements CustomerDAO{
 		return 0;
 	}
 
-	@Override
-	public List<Customer> getAllCustomer(int page) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public List<Customer> searchCustomer(String search, int page) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	private int checkEmail(Customer customer) {
 		try {

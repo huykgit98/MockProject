@@ -2,3 +2,4 @@ eclipse.preferences.version=1
 encoding//database/bookingbusticketsystem.sql=UTF-8
 encoding//src/main/java/edu/sgu/bookingsystem/controller/client/RegisterClientController.java=UTF-8
 encoding//src/main/java/edu/sgu/bookingsystem/dao/impl/CustomerDAOImpl.java=UTF-8
+encoding//src/main/java/edu/sgu/bookingsystem/dao/impl/TimeDAOImpl.java=UTF-8

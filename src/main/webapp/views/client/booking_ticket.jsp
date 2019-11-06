@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	<%@page import="edu.sgu.bookingsystem.model.Customer"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -95,26 +98,31 @@
                              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-ms-12">
                                  
                                      <h3 class="text-uppercase">Thông tin hành khách(HK)</h3>
-                                     
+                                     <%
+										if (request.getAttribute("customerinfo") != null) {
+											Customer customer = (Customer) request.getAttribute("customerinfo");
+									%> 
                                      <div class="form-group">
                                          <label for="">Họ tên</label>
-                                         <input type="text" name="" class="form-control"/>
+                                         <input type="text" name="fullname" value="<%=customer.getFullName()%>" class="form-control"/>
                                      </div>
                                      <div class="form-group">
                                          <label for="">Số điện thoai</label>
-                                         <input type="phone" name="" class="form-control"/>
+                                         <input type="phone" name="phonenumber" value="<%=customer.getPhone()%>" class="form-control"/>
                                      </div>
                                       <div class="form-group">
                                          <label for="">Email</label>
-                                         <input type="email" name="" class="form-control"/>
+                                         <input type="email" name="email" value="<%=customer.getEmail()%>" class="form-control"/>
                                      </div>
                                      
                                      <div class="form-group">
                                          <label for="">Địa chỉ</label>
-                                         <input type="text" name="" class="form-control"/>
+                                         <input type="text" name="address" value="<%=customer.getAddress()%>" class="form-control"/>
                                      </div>
                                     
-                                
+                                    <%
+							}
+						%>
                              </div>
                              
                              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-ms-12">
@@ -122,12 +130,27 @@
                                      <h3 class="text-uppercase">Mã vé <span class="text-primary">ABCDE</span> </h3>
                                     
                                      <div class="form-group">
-                                         <label for="">Tuyến đường</label>
-                                         <input type="text" name="" class="form-control"/>
+                                         <label for="">Điểm khởi hành</label>
+                                         <select name="startplace" class="form-control">
+                                       
+											<c:forEach items="${placeList}" var="place">
+											<option value="${place.id}">${place.placeName}</option>
+											</c:forEach>
+                                         </select>
+                                         
                                      </div>
                                      <div class="form-group">
+                                         <label for="">Điểm đến</label>
+                                         <select name="finishplace" class="form-control">
+                                              <c:forEach items="${placeList}" var="place">
+												<option value="<c:out value="${place.id}"></c:out>">
+													<c:out value="${place.placeName}"></c:out></option>
+											</c:forEach>
+                                         </select>
+                                     </div>
+                                     	<div class="form-group">
                                          <label for="">Ngày đi</label>
-                                         <input type="text" name="" class="form-control"/>
+                                         <input type="date" name="" class="form-control"/>
                                      </div>
                                       <div class="form-group">
                                          <label for="">Giờ khởi hành</label>
@@ -137,18 +160,12 @@
                                              <option>Điểm 1</option>
                                          </select>
                                      </div>
+                                     
                                      <div class="form-group">
                                          <label for="">Số vé</label>
-                                         <input type="text" name="" class="form-control"/>
+                                         <input type="number" name="" class="form-control" value="0"/>
                                      </div>
-                                     <div class="form-group">
-                                         <label for="">Điểm lên xe</label>
-                                         <select name="" class="form-control">
-                                             <option>Điểm 1</option>
-                                             <option>Điểm 1</option>
-                                             <option>Điểm 1</option>
-                                         </select>
-                                     </div>
+                                     
                                     
                                  
                              </div>
@@ -161,7 +178,7 @@
                                   <button class="btn btn-primary btn-block">Đặt vé </button>
                              </div>
                              
-                             <p class="text-primary">Lưu ý: không hỗ trợ hotmail và outlook mail.</p>
+                             <p class="text-primary">Lưu ý: bạn có thể thay đổi thông tin hành khách nếu mua cho người khác.</p>
                              </form>
                          </div>
                         
@@ -325,7 +342,7 @@
                           </form>
                          <div class="row">
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col-ms-12">
-                                <div class="ordered"></div><span>Đã chọn</span>
+                                <div class="ordered"></div><span>Đang chọn</span>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col-ms-12">
                                 <div class="booked"></div><span>Đã đặt</span>

@@ -17,6 +17,13 @@ public class BookingTicketServiceImpl implements BookingTicketService {
 		list=bookingticketdao.getTicketInfo(startPlace, finishPlace, dateStart, timeStart);
 		return list;
 	}
+
+	@Override
+	public List<Ticket> getSeatsBySchedule(long startPlaceID, long finishPlaceID, String dateStart, String timeStart) {
+		List<Ticket> list = new ArrayList<Ticket>();
+		list=bookingticketdao.getSeatsBySchedule(startPlaceID, finishPlaceID, dateStart, timeStart);
+		return list;
+	}
 	
 //	public static void main(String[] args) {
 //	BookingTicketService bkservice = new BookingTicketServiceImpl();

@@ -15,20 +15,29 @@ public class ScheduleServiceImpl implements ScheduleService {
 	ScheduleDAO scheduledao = new ScheduleDAOImpl();
 
 	@Override
-	public HashSet<Schedule> getFinishPlaceByStartPlace(String startPlace) {
+	public HashSet<Schedule> getFinishPlaceByStartPlace(long startPlace) {
 		HashSet<Schedule> list = new HashSet<Schedule>();
 		list=scheduledao.getFinishPlaceByStartPlace(startPlace);
+		return list;
+	}
+	@Override
+	public HashSet<Schedule> getTimeStartBySchedule(long startPlace, long finishPlace) {
+		HashSet<Schedule> list = new HashSet<Schedule>();
+		list=scheduledao.getTimeStartBySchedule(startPlace, finishPlace);
 		return list;
 	}
 //	public static void main(String[] args) {
 //		ScheduleService Scheduledao = new ScheduleServiceImpl();
 //	
-//		HashSet<Schedule> items=Scheduledao.getFinishPlaceByStartPlace("Sài Gòn");;
+//		HashSet<Schedule> items=Scheduledao.getFinishPlaceByStartPlace(1);;
 //	System.out.println(items.size());
 //	for(Schedule i:items){
-//	
+//		System.out.println(i.getFinishPlaceID());
+//
 //	System.out.println(i.getFinishPlace());
 //	}
 //	
 //	}
+
+
 }

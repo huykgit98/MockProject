@@ -6,6 +6,8 @@ import java.util.List;
 import edu.sgu.bookingsystem.model.Schedule;
 
 public interface ScheduleService {
-	HashSet<Schedule> getFinishPlaceByStartPlace(String startPlace);
+	HashSet<Schedule> getFinishPlaceByStartPlace(long startPlace);
+	HashSet<Schedule> getTimeStartBySchedule(long startPlace, long finishPlace);
 
+	
 }

@@ -29,6 +29,8 @@ public class CustomerInfoController extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html;charset=UTF-8");
+		request.setCharacterEncoding("utf-8");
 		if ("infoCustomer".equalsIgnoreCase(request.getParameter("param"))) {
 			String email = (String) request.getSession().getAttribute("email");
 			String password = (String) request.getSession().getAttribute("password");

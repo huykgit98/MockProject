@@ -11,18 +11,15 @@ import edu.sgu.bookingsystem.model.Ticket;
 public interface BookingTicketDAO {
 
 	int insertBooking(Booking booking);
-	
-	List<BookingTicket> getTicketBookedAvailableByStartDate(LocalDate date,int page);
-	
+		
 	int cancelBooking(BookingTicket BookingTicket);
 	
+	List<Ticket> getTicketBookedByCustomer(long customerID);
 	
-	List<BookingTicket> getBookedByCusIDPage(int customer_ID, int page);
-	
-	List<BookingTicket> searchBooking(String search, int page);
-	
-	Booking getBookingByDateStartScheduleSeat(Booking booking);
+	//Booking getBookingByDateStartScheduleSeat(Booking booking);
 	
 	List<Ticket> getTicketInfo(String startPlace, String finishPlace, String dateStart, String timeStart);
 	
+	List<Ticket> getSeatsBySchedule(long startPlace, long finishPlace, String dateStart, String timeStart);
+
 }

@@ -68,10 +68,10 @@ public class PlaceDAOImpl implements PlaceDAO {
 //		PlaceDAO placedao = new PlaceDAOImpl();
 //		
 //		List<Place> items=placedao.getPlaces();;
-//		System.out.println(items.size());
+//		//System.out.println(items.size());
 //		for(Place i:items){
 //		System.out.println(i.getId());
-//		System.out.println(i.getPlaceName());
+//		//System.out.println(i.getPlaceName());
 //		}
 //		
 //	}

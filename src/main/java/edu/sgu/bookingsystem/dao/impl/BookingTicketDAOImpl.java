@@ -24,29 +24,13 @@ public class BookingTicketDAOImpl implements BookingTicketDAO {
 
 
 	@Override
-	public int cancelBooking(BookingTicket bookingTicket) {
-		try {
-			Connection dbConnection = null;
-			dbConnection = JDBCConnection.getConnection();
-			String sql="UPDATE Booking.Booking SET Status = 'False' WHERE Booking_ID = ?";
-			stmt = dbConnection.prepareStatement(sql);
-			stmt.setLong(1, bookingTicket.getBooking_ID());
-
-			stmt.executeUpdate();
-
-			return 1;
-
-		} catch (Exception e) {
-			System.err.println(e.getMessage());
-		} finally {
-			finallyFunction();
-		}
-
+	public int cancelBooking(Ticket ticket) {
 		return 0;
+		
 	}
 
 	@Override
-	public int insertBooking(Booking booking) {
+	public int insertBooking(Ticket ticket) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -79,16 +63,16 @@ public class BookingTicketDAOImpl implements BookingTicketDAO {
 			while (rs.next()) {
 
 				Ticket ticket=new Ticket();
-				ticket.setTypeName(rs.getString("TypeName"));
-				ticket.setSeatNum(rs.getInt("SeatNum"));
-				ticket.setPrice(rs.getDouble("Price"));
-				ticket.setStartPlace(rs.getString("StartPlace"));
-				ticket.setFinishPlace(rs.getString("FinishPlace"));
-				ticket.setDateStart(rs.getString("DateStart"));
-				ticket.setTimeStart(rs.getString("TimeStart"));
-				ticket.setBookingID(rs.getLong("BookingID"));
-				ticket.setStatus(rs.getInt("Status"));
-				ticket.setSeat(rs.getInt("Seat"));
+//				ticket.setTypeName(rs.getString("TypeName"));
+//				ticket.setSeatNum(rs.getInt("SeatNum"));
+//				ticket.setPrice(rs.getDouble("Price"));
+//				ticket.setStartPlace(rs.getString("StartPlace"));
+//				ticket.setFinishPlace(rs.getString("FinishPlace"));
+//				ticket.setDateStart(rs.getString("DateStart"));
+//				ticket.setTimeStart(rs.getString("TimeStart"));
+//				ticket.setBookingID(rs.getLong("BookingID"));
+//				ticket.setStatus(rs.getInt("Status"));
+				ticket.setSeat(rs.getString("Seat"));
 
 				listTicket.add(ticket);			
 
@@ -148,7 +132,7 @@ List<Ticket> listTicket = new ArrayList<>();
 				ticket.setTimeStart(rs.getString("TimeStart"));
 				ticket.setBookingID(rs.getLong("BookingID"));
 				ticket.setStatus(rs.getInt("Status"));
-				ticket.setSeat(rs.getInt("Seat"));
+				ticket.setSeat(rs.getString("Seat"));
 
 				listTicket.add(ticket);			
 
@@ -176,9 +160,9 @@ List<Ticket> listTicket = new ArrayList<>();
 	}
 
 	
-//	public static void main(String[] args) {
-	//	BookingTicketDAO bkdao = new BookingTicketDAOImpl();
-//		List<Ticket> items=bkdao.getTicketInfo("Sài Gòn", "Cà Mau", "2019-10-22", "20:00:00");
+	public static void main(String[] args) {
+		BookingTicketDAO bkdao = new BookingTicketDAOImpl();
+		List<Ticket> items=bkdao.getTicketInfo("Sài Gòn", "Cà Mau", "2019-10-22", "20:00:00");
 //		System.out.println(items.size());
 //		for(Ticket i:items){
 //		System.out.println(i.getStartPlace());
@@ -189,13 +173,13 @@ List<Ticket> listTicket = new ArrayList<>();
 //		System.out.println("");
 //
 //		}
-//		System.out.println("----");
-//		List<Ticket> items1=bkdao.getSeatsBySchedule(1, 7, "2019-10-22", "20:00:00");
-//		System.out.println(items1.size());
-//		for(Ticket i:items1){
-//		System.out.println(i.getSeat());
-//		System.out.println("");
-//	}
-//	}
+		System.out.println("----");
+		List<Ticket> items1=bkdao.getSeatsBySchedule(1, 7, "2019-11-11", "20:00:00");
+		System.out.println(items1.size());
+		for(Ticket i:items1){
+		System.out.println(i.getSeat());
+		System.out.println("");
+	}
+	}
 
 }

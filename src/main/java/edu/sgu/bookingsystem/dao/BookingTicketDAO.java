@@ -10,9 +10,9 @@ import edu.sgu.bookingsystem.model.Ticket;
 
 public interface BookingTicketDAO {
 
-	int insertBooking(Booking booking);
+	int insertBooking(Ticket ticket);
 		
-	int cancelBooking(BookingTicket BookingTicket);
+	int cancelBooking(Ticket ticket);
 	
 	List<Ticket> getTicketBookedByCustomer(long customerID);
 	

@@ -125,7 +125,6 @@
                                                 </div>
                                                  <div class="col-lg-12">
                                                      <button type="submit" class="btn btn-primary btn-flat"><i class="fa fa-ticket icon-flat bg-btn-actived"></i>  Mua vé</button>
-                                                     <p>Khách đã đặt <span>1000</span> vé!</p>
                                                  </div>
                                                 
                                             </form>

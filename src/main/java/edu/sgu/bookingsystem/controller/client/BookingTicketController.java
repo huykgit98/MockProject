@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -50,32 +51,26 @@ public class BookingTicketController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("utf-8");
-		PlaceService placeService = new PlaceServiceImpl();
-		BookingTicketService bookingservice = new BookingTicketServiceImpl();
-		List<Place> placeList = placeService.getPlaces();
-	   // List<Ticket> ticketList = bookingservice.getTicketInfo("Sài Gòn", "Cà Mau", "2019-10-22", "20:00:00");
-		
 	    String email = (String) request.getSession().getAttribute("email");
 		String password = (String) request.getSession().getAttribute("password");
 
 		Customer customer = new Customer(email, password);
+		//tạo các đối tượng service để lấy thông tin
+		PlaceService placeService = new PlaceServiceImpl();
+		ScheduleService scheduleService = new ScheduleServiceImpl();
+		BookingTicketService bookingTicketService = new BookingTicketServiceImpl();
 
-//		CustomerDAO customerDAO = new CustomerDAOImpl();
-//		customer = customerDAO.getCustomer(customer);
 		CustomerService customerService = new CustomerServiceImpl();
+		
 		customer = customerService.getCustomer(customer);
-		
-		
-		
-		
 		request.setAttribute("customerinfo", customer);
+		List<Place> placeList = placeService.getPlaces();
 		request.setAttribute("placeList", placeList);
-	//	request.setAttribute("ticketList", ticketList);
-//    	String json = new Gson().toJson(placeList);
-    	 
-//		response.setContentType("application/json");
-//		response.setCharacterEncoding("UTF-8");
-	//	response.getWriter().write(json);
+		
+		
+        
+		//tạo các danh sách 
+
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/views/client/booking_ticket.jsp");
 		requestDispatcher.forward(request, response);
 		
@@ -85,77 +80,22 @@ public class BookingTicketController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("utf-8");
-		try {
-			PrintWriter out = response.getWriter();
-//			ArrayList<String> arr1 = new ArrayList<String>();
-//			arr1.add("của sài gòn 1");
-//			arr1.add("của sài gòn 2");
-//			arr1.add("của sài gòn 3");
-//
-//			ArrayList<String> arr2 = new ArrayList<String>();
-//			arr2.add("của kiên giang 1");
-//			arr2.add("của kiên giang 2");
-//			arr2.add("của kiên giang 3");
-			ScheduleService scheduleService = new ScheduleServiceImpl();
-			PlaceService placeService = new PlaceServiceImpl();
-			List<Place> listStartPlace = placeService.getPlaces();
-			HashSet<Schedule> listFinishPlace = new HashSet<Schedule>();
-			HashSet<Schedule> listTimeStart = new HashSet<Schedule>();
+	    String fullName = (String) request.getParameter("fullname");
+	    String phoneNumber = (String) request.getParameter("phonenumber");
+	    String email = (String) request.getParameter("email");
+	    String address = (String) request.getParameter("address");
+	    //id not name finishplace=12&datestart=2019-11-11&timestart=18%3A00%3A00&listseatbooking=13%2C14%2C18%2C17&unitprice=200000
+	    String startPlace = (String) request.getParameter("startplace");
+	    String finishPlace = (String) request.getParameter("finishplace");
+	    String dateStart = (String) request.getParameter("datestart");
+	    String timeStart = (String) request.getParameter("timestart");
+	    String unitPrice = (String) request.getParameter("unitprice");
+	    String listSeatBooking = (String) request.getParameter("listseatbooking");
 
-			long startPlace;
-			long finishPlace=1;
-			
-			String loadinfoticket = request.getParameter("loadinfoticket");
-			if(loadinfoticket!=null) {
-				for(Place k:listStartPlace) {
-					if(loadinfoticket.equals(String.valueOf(k.getId())))
-					{
-						startPlace =k.getId() ;
-						listFinishPlace=scheduleService.getFinishPlaceByStartPlace(startPlace );
-						listTimeStart=scheduleService.getTimeStartBySchedule(startPlace, finishPlace );
-						response.getWriter().write("load diem ve: <select>");
-						for(Schedule i:listFinishPlace) {
-							response.getWriter().write("<option value='"+i.getFinishPlaceID()+"'>"+i.getFinishPlace()+"</option>");
-						}
-						response.getWriter().write("</select>");
-						response.getWriter().write("||");
-						response.getWriter().write("load thoi gian chay: <select>");
-						for(Schedule i:listTimeStart) {
-							response.getWriter().write("<option value='"+i.getTimeStart()+"'>"+i.getTimeStart()+"</option>");
-						}
-						response.getWriter().write("</select>");
-					}
-				}
-			}
+	    System.out.println(fullName+" - "+phoneNumber+" - " +email+ " - "+address+ " - "+ startPlace + " - " +finishPlace+ " - " +dateStart +" - " +timeStart+ "- "+unitPrice+ " - "+listSeatBooking);
+		response.sendRedirect("BookingTicketController");
 
-			
-		}
-		catch(Exception e) {}
-		//doGet(request, response);
-		
 	}
-	public static void main(String[] args) throws Exception, SecurityException {
-		ScheduleService scheduleService = new ScheduleServiceImpl();
-		BookingTicketService bookingTicketService = new BookingTicketServiceImpl();
-		
-		PlaceService placeService = new PlaceServiceImpl();
-		List<Place> listStartPlace = placeService.getPlaces();
-		
-		HashSet<Schedule> listFinishPlace = new HashSet<Schedule>();
-		HashSet<Schedule> listTimeStart = new HashSet<Schedule>();
-		List<Ticket> listSeat = new ArrayList<Ticket>();
 
-		long startPlaceID= 1;
-		long finishPlaceID=7;
-		String dateStart = "2019-10-22";
-		String timeStart = "20:00:00";
-		
-		listFinishPlace = scheduleService.getFinishPlaceByStartPlace(startPlaceID);
-		listTimeStart = scheduleService.getTimeStartBySchedule(startPlaceID, finishPlaceID);
-		listSeat = bookingTicketService.getSeatsBySchedule(startPlaceID, finishPlaceID, dateStart, timeStart);
-		
-		
-		
-	}
 
 }

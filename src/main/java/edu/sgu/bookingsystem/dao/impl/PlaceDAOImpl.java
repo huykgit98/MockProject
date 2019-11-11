@@ -12,22 +12,17 @@ import edu.sgu.bookingsystem.dao.PlaceDAO;
 import edu.sgu.bookingsystem.model.Place;
 
 public class PlaceDAOImpl implements PlaceDAO {
-	private Connection dbConnection = null;
 	private PreparedStatement stmt = null;
 	public PlaceDAOImpl() {
-		try {
-			dbConnection = JDBCConnection.getConnection();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			System.out.println("PlaceDAOImpl: Ket noi that bai!");
-		}
+		
 	}
 	@Override
 	public List<Place> getPlaces() {
 		List<Place> placeList = new ArrayList<>();
 
 		try {
+			Connection dbConnection = null;
+			dbConnection = JDBCConnection.getConnection();
 			String sql= "SELECT p.PlaceID, p.PlaceName FROM place p";
 			stmt = dbConnection.prepareStatement(sql);
 
@@ -54,14 +49,7 @@ public class PlaceDAOImpl implements PlaceDAO {
 				stmt.close();
 		} catch (SQLException se) {
 			se.printStackTrace();
-		} finally {
-			try {
-				if (dbConnection != null)
-					dbConnection.close();
-			} catch (SQLException se) {
-				se.printStackTrace();
-			}
-		}
+		} 
 	}
 	
 //	public static void main(String[] args) {

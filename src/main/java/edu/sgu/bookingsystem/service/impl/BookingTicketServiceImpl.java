@@ -27,18 +27,17 @@ public class BookingTicketServiceImpl implements BookingTicketService {
 	
 //	public static void main(String[] args) {
 //	BookingTicketService bkservice = new BookingTicketServiceImpl();
-//	List<Ticket> items=bkservice.getTicketInfo("Sài Gòn", "Cà Mau", "2019-10-22", "20:00:00");
+//	List<Ticket> items=bkservice.getSeatsBySchedule(1, 7, "2019-11-11", "20:00:00");
 //	System.out.println(items.size());
 //	for(Ticket i:items){
-//	System.out.println(i.getStartPlace());
-//	System.out.println(i.getFinishPlace());
-//	System.out.println(i.getDateStart());
-//	System.out.println(i.getTimeStart());
+//	//System.out.println(i.getStartPlace());
+//	//System.out.println(i.getFinishPlace());
+//	//System.out.println(i.getDateStart());
+//	//System.out.println(i.getTimeStart());
 //	System.out.println(i.getSeat());
 //	System.out.println("");
 //
 //	}
-//
 //}
 	
 }

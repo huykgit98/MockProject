@@ -15,7 +15,7 @@ public class Ticket {
 	long bookingID;
 	long cusID;
 	int status;
-	int seat;
+	String seat;
 	
 	public Ticket() {
 		super();
@@ -110,16 +110,16 @@ public class Ticket {
 		this.status = status;
 	}
 
-	public int getSeat() {
+	public String getSeat() {
 		return seat;
 	}
 
-	public void setSeat(int seat) {
+	public void setSeat(String seat) {
 		this.seat = seat;
 	}
 
 	public Ticket(String typeName, String numberPlate, int seatNum, double price, String startPlace, String finishPlace,
-			String dateStart, String timeStart, long bookingID, long cusID, int status, int seat) {
+			String dateStart, String timeStart, long bookingID, long cusID, int status, String seat) {
 		super();
 		this.typeName = typeName;
 		this.numberPlate = numberPlate;

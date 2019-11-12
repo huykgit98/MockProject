@@ -13,62 +13,18 @@
         <script src="http://vinpearlsafari.com/wp-content/themes/vinsafari/js/html5.js"></script>
         <![endif]-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-        <link rel='stylesheet' id='theme-style-css'  href='css/style.css' type='text/css' media='all' />
-        <link rel='stylesheet' id=''  href='plugins/flexslider/flexslider.css' type='text/css' media='all' />
-        <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-        <script type="text/javascript" src="js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="plugins/flexslider/jquery.flexslider-min.js"></script>
-        <script type="text/javascript" src="js/theme.js"></script>
+        <link rel='stylesheet' id='theme-style-css'  href='${pageContext.request.contextPath}/resources/client/css/style.css' type='text/css' media='all' />
+        <link rel='stylesheet' id=''  href='${pageContext.request.contextPath}/resources/client/plugins/flexslider/flexslider.css' type='text/css' media='all' />
+        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/client/js/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/client/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/client/plugins/flexslider/jquery.flexslider-min.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/client/js/theme.js"></script>
     </head>
     <body>
         <div id="page">
             <!-- header -->
-            <header>
-                <div id="top">
-                    <div class="container">
-                        
-                        <div class="support"><i class="fa fa-phone"></i> Tổng đài hỗ trợ: <span>0902 1818 52</span></div>
-                        <ul>
-                            <li><a href="#">EN</a></li>
-                            <li><a href="#">Đăng nhập</a></li>
-                            <li><a href="#">Đăng ký</a></li>
-                            
-                        </ul>
-                    </div>
-                </div>
-                <div id="header-body">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-ms-12">
-                                <h1 id="logo">
-                                    <a href=""><img src="img/logo.png"/></a>
-                                </h1>
-                                
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-ms-12">
-                                <div class="navbar-header">
-                                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav" aria-expanded="false">
-                                        <span class="sr-only">Toggle navigation</span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                    </button>
-                                    <a href="/" class="navbar-brand">Trang chủ</a>
-                                </div>
-                                  
-                                <nav id="main-nav" class="collapse navbar-collapse clearfix">
-                                    <ul>
-                                        <li><a href="#">Khuyến mãi</a></li>
-                                        <li><a href="">Lịch trình</a></li>
-                                        <li><a href="">Liên hệ</a></li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-            </header>
+                <%@ include file="header.jsp"%>
+    
             <section id="body-content">
                 <div class="container" id="login-page">
                     <div id="top-login" class="clearfix hidden-sm">
@@ -107,24 +63,14 @@
                             </div>
                             <div class="card-body bg-white">
                                 <p class="text-center">
-                                    <strong>Đơn hàng của bạn đã được xác nhận</strong><br>
-                                    <span class="text-muted">Cám ơn bạn đã sử dụng dịch vụ đặt vé của Phương Trang.</span>
+                                    <strong>Đơn hàng của bạn đã đặt thành công</strong><br>
+                                    <span class="text-muted">Cảm ơn quý khách đã sử dụng dịch vụ đặt vé của chúng tui.</span>
                                 </p>
-                                <table class="table">
-                                    <tr>
-                                        <td>Mã đặt vé</td>
-                                        <td>ABCDE</td>
-                                    </tr>
-                                     <tr>
-                                        <td>Số tiền</td>
-                                        <td><span class="text-primary">100.000 đ</span></td>
-                                    </tr>
-                                </table>
+								<p class="text-center">
+                                    <a href="${pageContext.request.contextPath}/BookingTicketController"><button class="btn btn-primary">Xem lịch sử vé đã đặt</button></a>
+                                </p>
                                 <p class="text-center">Quý khách vui lòng có mặt trước 15 tại bến xe trước khi khởi hành, để làm thủ tục lên xe.</p>
-                                <p class="text-center">
-                                    <button class="btn btn-primary">Tiếp tục</button>
-                                </p>
-                               
+                            
                             </div>
                         </div>
                        

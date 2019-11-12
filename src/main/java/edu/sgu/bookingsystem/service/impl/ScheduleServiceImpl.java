@@ -26,8 +26,13 @@ public class ScheduleServiceImpl implements ScheduleService {
 		list=scheduledao.getTimeStartBySchedule(startPlace, finishPlace);
 		return list;
 	}
-//	public static void main(String[] args) {
-//		ScheduleService Scheduledao = new ScheduleServiceImpl();
+	@Override
+	public long getScheduleIDByStartPlaceFinishPlaceTimeStart(long startPlace, long finishPlace, String timeStart) {
+		return scheduledao.getScheduleIDByStartPlaceFinishPlaceTimeStart(startPlace, finishPlace, timeStart);
+	}
+
+	public static void main(String[] args) {
+		ScheduleService Scheduledao = new ScheduleServiceImpl();
 //	
 //		HashSet<Schedule> items=Scheduledao.getFinishPlaceByStartPlace(1);;
 //	System.out.println(items.size());
@@ -37,7 +42,8 @@ public class ScheduleServiceImpl implements ScheduleService {
 //	System.out.println(i.getFinishPlace());
 //	}
 //	
-//	}
+		System.out.print(Scheduledao.getScheduleIDByStartPlaceFinishPlaceTimeStart(1, 7, "21:00:00"));
+	}
 
 
 }

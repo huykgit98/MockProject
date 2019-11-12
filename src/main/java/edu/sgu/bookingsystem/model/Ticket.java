@@ -15,12 +15,89 @@ public class Ticket {
 	long bookingID;
 	long cusID;
 	int status;
-	String seat;
+	int seat;
+	long startPlaceID;
+	long finishPlaceID;
+	String bookingDate;
+	long scheduleID;
+	String email;
+	String fullName;
+	String address;
+	String phone;
 	
 	public Ticket() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
+	
+	public Ticket(String typeName, String numberPlate, int seatNum, double price, String startPlace, String finishPlace,
+			String dateStart, String timeStart, long bookingID, long cusID, int status, int seat, long startPlaceID,
+			long finishPlaceID, String bookingDate, long scheduleID, String email, String fullName, String address,
+			String phone) {
+		super();
+		this.typeName = typeName;
+		this.numberPlate = numberPlate;
+		this.seatNum = seatNum;
+		this.price = price;
+		this.startPlace = startPlace;
+		this.finishPlace = finishPlace;
+		this.dateStart = dateStart;
+		this.timeStart = timeStart;
+		this.bookingID = bookingID;
+		this.cusID = cusID;
+		this.status = status;
+		this.seat = seat;
+		this.startPlaceID = startPlaceID;
+		this.finishPlaceID = finishPlaceID;
+		this.bookingDate = bookingDate;
+		this.scheduleID = scheduleID;
+		this.email = email;
+		this.fullName = fullName;
+		this.address = address;
+		this.phone = phone;
+	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+	public String getFullName() {
+		return fullName;
+	}
+
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+
+
+	public String getAddress() {
+		return address;
+	}
+
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+
+	public String getPhone() {
+		return phone;
+	}
+
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
 
 	public String getTypeName() {
 		return typeName;
@@ -110,16 +187,48 @@ public class Ticket {
 		this.status = status;
 	}
 
-	public String getSeat() {
+	public int getSeat() {
 		return seat;
 	}
 
-	public void setSeat(String seat) {
+	public void setSeat(int seat) {
 		this.seat = seat;
 	}
 
+	public long getStartPlaceID() {
+		return startPlaceID;
+	}
+
+	public void setStartPlaceID(long startPlaceID) {
+		this.startPlaceID = startPlaceID;
+	}
+
+	public long getFinishPlaceID() {
+		return finishPlaceID;
+	}
+
+	public void setFinishPlaceID(long finishPlaceID) {
+		this.finishPlaceID = finishPlaceID;
+	}
+
+	public String getBookingDate() {
+		return bookingDate;
+	}
+
+	public void setBookingDate(String bookingDate) {
+		this.bookingDate = bookingDate;
+	}
+
+	public long getScheduleID() {
+		return scheduleID;
+	}
+
+	public void setScheduleID(long scheduleID) {
+		this.scheduleID = scheduleID;
+	}
+
 	public Ticket(String typeName, String numberPlate, int seatNum, double price, String startPlace, String finishPlace,
-			String dateStart, String timeStart, long bookingID, long cusID, int status, String seat) {
+			String dateStart, String timeStart, long bookingID, long cusID, int status, int seat) {
 		super();
 		this.typeName = typeName;
 		this.numberPlate = numberPlate;
@@ -133,6 +242,44 @@ public class Ticket {
 		this.cusID = cusID;
 		this.status = status;
 		this.seat = seat;
+	}
+
+	public Ticket(String typeName, String numberPlate, int seatNum, double price, String startPlace, String finishPlace,
+			String dateStart, String timeStart, long bookingID, long cusID, int status, int seat, long startPlaceID,
+			long finishPlaceID, String bookingDate, long scheduleID) {
+		super();
+		this.typeName = typeName;
+		this.numberPlate = numberPlate;
+		this.seatNum = seatNum;
+		this.price = price;
+		this.startPlace = startPlace;
+		this.finishPlace = finishPlace;
+		this.dateStart = dateStart;
+		this.timeStart = timeStart;
+		this.bookingID = bookingID;
+		this.cusID = cusID;
+		this.status = status;
+		this.seat = seat;
+		this.startPlaceID = startPlaceID;
+		this.finishPlaceID = finishPlaceID;
+		this.bookingDate = bookingDate;
+		this.scheduleID = scheduleID;
+	}
+
+
+	public Ticket(String dateStart, int status, long startPlaceID, long finishPlaceID, String bookingDate,
+			long scheduleID, String email, String fullName, String address, String phone) {
+		super();
+		this.dateStart = dateStart;
+		this.status = status;
+		this.startPlaceID = startPlaceID;
+		this.finishPlaceID = finishPlaceID;
+		this.bookingDate = bookingDate;
+		this.scheduleID = scheduleID;
+		this.email = email;
+		this.fullName = fullName;
+		this.address = address;
+		this.phone = phone;
 	}
 	
 	

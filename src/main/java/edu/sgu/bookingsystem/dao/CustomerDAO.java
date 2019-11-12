@@ -11,5 +11,5 @@ public interface CustomerDAO {
 
 	int updateCustomer(Customer customer);
 	
-	
+	long getCustomerID(String fullname, String phone);
 }

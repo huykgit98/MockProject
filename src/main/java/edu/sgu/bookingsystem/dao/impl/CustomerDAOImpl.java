@@ -11,6 +11,7 @@ import org.mindrot.jbcrypt.BCrypt;
 import edu.sgu.bookingsystem.connect.JDBCConnection;
 import edu.sgu.bookingsystem.dao.CustomerDAO;
 import edu.sgu.bookingsystem.model.Customer;
+import edu.sgu.bookingsystem.model.Schedule;
 
 public class CustomerDAOImpl implements CustomerDAO{
 	private Connection dbConnection = null;
@@ -223,6 +224,37 @@ public class CustomerDAOImpl implements CustomerDAO{
 			}
 		}
 	}
+
+	@Override
+	public long getCustomerID(String fullname, String phone) {
+		Customer customer = new Customer();
+
+		try {
+			Connection dbConnection = null;
+			dbConnection = JDBCConnection.getConnection();
+
+			String sql="SELECT c.CusID FROM customers c WHERE c.FullName = ? AND c.Phone = ?";
+			stmt = dbConnection.prepareStatement(sql);
+			stmt.setString(1, fullname);
+			stmt.setString(2, phone);
+			ResultSet rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				customer.setId(rs.getLong("CusID"));			
+				}
+
+
+			return customer.getId();
+		} catch (
+
+		SQLException e) {
+			e.printStackTrace();
+		} finally {
+			finallyFunction();
+		}
+
+		return customer.getId();
+	}
 	
 //	public static void main(String[] args){
 //
@@ -239,10 +271,10 @@ public class CustomerDAOImpl implements CustomerDAO{
 //		
 //	}
 	
-	
+//	
 //	public static void main(String[] args) {
-//		String password = "123456";
-//		String hash = BCrypt.hashpw(password, BCrypt.gensalt(12));
-//		System.out.println("BCrypt hash: " + hash);
+//	
+//		CustomerDAO cusdao = new CustomerDAOImpl();
+//		System.out.println(cusdao.getCustomerID("Huy Nguyen", "0387134747"));
 //	}
 }

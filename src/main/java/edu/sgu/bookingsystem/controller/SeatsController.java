@@ -48,15 +48,9 @@ public class SeatsController extends HttpServlet {
 				String finish_place = request.getParameter("finishplace");
 				String date_start = request.getParameter("datestart");
 				String time = request.getParameter("timestart");
-				String time_start=null;
-//				if(time.contains("%3A")) {
-//					time_start = time.replace("%3A", ":");
-//				}
-//				System.out.println(time_start);
 				System.out.println(start_place);
 				System.out.println(finish_place);
 				System.out.println(time);
-				System.out.println(date_start);
 
 
 				ObjectMapper Obj = new ObjectMapper(); 
@@ -98,33 +92,40 @@ public class SeatsController extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		doGet(request, response);
 	}
-	
-//	public static void main(String[] args) {
-//		BookingTicketService bookingTicketService = new BookingTicketServiceImpl();
-//
-//		List<Ticket> listSeat = new ArrayList<Ticket>();
-//		String start_place = "1";
-//		String finish_place ="7";
-//		String date_start = "2019-11-11";
-//		String time = "20%3A00%3A00";
-//		String time_start = null;
-//		if(time.contains("%3A")) {
-//			time_start = time.replace("%3A", ":");
-//		}
-//		ObjectMapper Obj = new ObjectMapper(); 
-//        try {if(finish_place!=null&&start_place!=null&&date_start!=null&&time_start!=null)
-//		{
-//			listSeat = bookingTicketService.getSeatsBySchedule(Long.valueOf(start_place),Long.valueOf(finish_place),date_start,time_start);
-//            String jsonListSeat = Obj.writeValueAsString(listSeat); 
-//
-//			System.out.println(jsonListSeat);
-//
-//			
-//        }
-//        	
-//        }
-//        catch (IOException e) { 
-//            e.printStackTrace(); 
-//        } 	
-//	}
+
+	public static void main(String[] args) {
+		BookingTicketService bookingTicketService = new BookingTicketServiceImpl();
+
+		List<Ticket> listSeat = new ArrayList<Ticket>();
+
+		
+		
+
+
+		ObjectMapper Obj = new ObjectMapper(); 
+        try { 
+
+            					
+//            
+//			if(finish_place!=null&&start_place!=null&&date_start!=null&&time_start!=null)
+//			{
+
+			//listSeat = bookingTicketService.getSeatsBySchedule(1,7,3,time);
+
+				listSeat = bookingTicketService.getSeatsBySchedule(1,7,"2019-11-12","20:00:00");
+	            String jsonListSeat = Obj.writeValueAsString(listSeat); 
+	            System.out.println(jsonListSeat);
+
+//            }
+    		//response.getWriter().write(jsonListPlace);
+    		//response.getWriter().write(jsonListFinishPlace);
+    		//response.getWriter().write(jsonListTimeStart);
+    		//response.getWriter().write(jsonListSeat);
+            
+        } 
+  
+        catch (IOException e) { 
+            e.printStackTrace(); 
+        } 		
+	}
 }

@@ -68,4 +68,12 @@ public class CustomerServiceImpl implements CustomerService {
 		return null;
 	}
 
+	@Override
+	public long getCustomerID(String fullname, String phone) {
+		return customerdao.getCustomerID(fullname, phone);
+	}
+//	public static void main(String[] args) {
+//		CustomerService cs = new CustomerServiceImpl();
+//		System.out.println(cs.getCustomerID("Huy Nguyen", "0387134747"));
+//	}
 }

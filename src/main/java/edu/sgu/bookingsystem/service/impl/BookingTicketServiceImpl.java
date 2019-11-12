@@ -5,6 +5,7 @@ import java.util.List;
 
 import edu.sgu.bookingsystem.dao.BookingTicketDAO;
 import edu.sgu.bookingsystem.dao.impl.BookingTicketDAOImpl;
+import edu.sgu.bookingsystem.model.Seat;
 import edu.sgu.bookingsystem.model.Ticket;
 import edu.sgu.bookingsystem.service.BookingTicketService;
 
@@ -23,6 +24,13 @@ public class BookingTicketServiceImpl implements BookingTicketService {
 		List<Ticket> list = new ArrayList<Ticket>();
 		list=bookingticketdao.getSeatsBySchedule(startPlaceID, finishPlaceID, dateStart, timeStart);
 		return list;
+	}
+
+
+
+	@Override
+	public int insertTicket(Ticket ticket, String[] listSeatStringArr) {
+		return bookingticketdao.insertBooking(ticket, listSeatStringArr);
 	}
 	
 //	public static void main(String[] args) {

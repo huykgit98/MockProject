@@ -5,15 +5,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.sql.CallableStatement;
 import edu.sgu.bookingsystem.connect.JDBCConnection;
 import edu.sgu.bookingsystem.dao.BookingTicketDAO;
-import edu.sgu.bookingsystem.model.Booking;
-import edu.sgu.bookingsystem.model.BookingTicket;
+
+import edu.sgu.bookingsystem.model.Seat;
 import edu.sgu.bookingsystem.model.Ticket;
+
 
 public class BookingTicketDAOImpl implements BookingTicketDAO {
 
@@ -30,9 +33,64 @@ public class BookingTicketDAOImpl implements BookingTicketDAO {
 	}
 
 	@Override
-	public int insertBooking(Ticket ticket) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int insertBooking(Ticket ticket, String[] listSeatStringArr) {
+		try(Connection conn =JDBCConnection.getConnection()){//conn=DBHelper.getConnection();
+			
+			try {
+				CallableStatement cstmt = conn.prepareCall("{call sp_insert_booking_update_customer(?, ?, ?, ?, ?, ?, ?, ?, ?)}");
+				cstmt.setLong(1, ticket.getScheduleID());
+				cstmt.setLong(2, ticket.getCusID());
+				cstmt.setString(3, ticket.getBookingDate());
+				cstmt.setString(4, ticket.getDateStart());
+				cstmt.setInt(5, ticket.getStatus());
+				cstmt.setString(6, ticket.getEmail());
+				cstmt.setString(7, ticket.getFullName());
+				cstmt.setString(8, ticket.getAddress());
+				cstmt.setString(9, ticket.getPhone());
+				
+				cstmt.executeUpdate();
+				
+				cstmt = conn.prepareCall("{call spSelectBookingIDByBookingInfo(?, ?, ?, ?)}");
+				cstmt.setLong(1, ticket.getScheduleID());
+				cstmt.setLong(2, ticket.getCusID());
+				cstmt.setString(3, ticket.getBookingDate());
+				cstmt.setString(4, ticket.getDateStart());
+				ResultSet rs = cstmt.executeQuery();
+
+				long lastBookingID = 0;
+
+				if (rs.next()) {
+					lastBookingID = rs.getLong("BookingID");
+				}
+
+				System.out.println(lastBookingID);
+				String sql = "INSERT INTO detail (`BookingID`, `Seat`, `Status`) VALUES(?,?,?)";
+				PreparedStatement stmt=conn.prepareStatement(sql);
+				int size = listSeatStringArr.length;
+				for (String string : listSeatStringArr)  {		
+					cstmt = conn.prepareCall("{call spInsertDetail(?, ?, ?)}");
+					stmt.setLong(1, lastBookingID);
+					stmt.setInt(2, Integer.valueOf(string));
+					
+					stmt.setInt(3, 1);
+					stmt.executeUpdate();
+				}
+				
+				return 1;
+
+				
+				
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return 0;
+			}
+		}
+		catch(Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return 0;
+		}
 	}
 	
 
@@ -72,7 +130,7 @@ public class BookingTicketDAOImpl implements BookingTicketDAO {
 //				ticket.setTimeStart(rs.getString("TimeStart"));
 //				ticket.setBookingID(rs.getLong("BookingID"));
 //				ticket.setStatus(rs.getInt("Status"));
-				ticket.setSeat(rs.getString("Seat"));
+				ticket.setSeat(rs.getInt("Seat"));
 
 				listTicket.add(ticket);			
 
@@ -98,7 +156,7 @@ public class BookingTicketDAOImpl implements BookingTicketDAO {
 
 	@Override
 	public List<Ticket> getSeatsBySchedule(long startPlace, long finishPlace, String dateStart, String timeStart) {
-List<Ticket> listTicket = new ArrayList<>();
+		List<Ticket> listTicket = new ArrayList<>();
 		
 		try {
 			Connection dbConnection = null;
@@ -132,7 +190,7 @@ List<Ticket> listTicket = new ArrayList<>();
 				ticket.setTimeStart(rs.getString("TimeStart"));
 				ticket.setBookingID(rs.getLong("BookingID"));
 				ticket.setStatus(rs.getInt("Status"));
-				ticket.setSeat(rs.getString("Seat"));
+				ticket.setSeat(rs.getInt("Seat"));
 
 				listTicket.add(ticket);			
 
@@ -160,26 +218,26 @@ List<Ticket> listTicket = new ArrayList<>();
 	}
 
 	
-	public static void main(String[] args) {
-		BookingTicketDAO bkdao = new BookingTicketDAOImpl();
-		List<Ticket> items=bkdao.getTicketInfo("Sài Gòn", "Cà Mau", "2019-10-22", "20:00:00");
-//		System.out.println(items.size());
-//		for(Ticket i:items){
-//		System.out.println(i.getStartPlace());
-//		System.out.println(i.getFinishPlace());
-//		System.out.println(i.getDateStart());
-//		System.out.println(i.getTimeStart());
-//		System.out.println(i.getSeat());
-//		System.out.println("");
-//
-//		}
-		System.out.println("----");
-		List<Ticket> items1=bkdao.getSeatsBySchedule(1, 7, "2019-11-11", "20:00:00");
-		System.out.println(items1.size());
-		for(Ticket i:items1){
-		System.out.println(i.getSeat());
-		System.out.println("");
-	}
-	}
+
+//	public static void main(String[] args) {
+//		String listSeatBooking = "7,6,5,14,10,9,13";
+//		String[] listSeatStringArr = listSeatBooking.split(",");
+//		BookingTicketDAO bk = new BookingTicketDAOImpl();
+//		Ticket ticket = new Ticket();
+//		ticket.setScheduleID(4);
+//	    ticket.setCusID(11);
+//	    ticket.setBookingDate(String.valueOf(LocalDateTime.now()));
+//	    ticket.setDateStart("2019-11-13");
+//	    ticket.setFullName("LÃª vÄƒn tÃ¡m");
+//	    ticket.setEmail("huykgit98@gmail.com");
+//	    ticket.setAddress("lank mark");
+//	    ticket.setPhone("0387171717");
+//	    ticket.setStatus(1);
+//	    System.out.println(bk.insertBooking(ticket , listSeatStringArr));
+////	    System.out.println(listSeatStringArr.length);
+////		for (String string : listSeatStringArr) {
+////			System.out.println(string);
+////		}
+//	}
 
 }

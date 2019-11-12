@@ -9,5 +9,6 @@ import edu.sgu.bookingsystem.model.Ticket;
 public interface ScheduleDAO {
 	HashSet<Schedule> getFinishPlaceByStartPlace(long startPlace);
 	HashSet<Schedule> getTimeStartBySchedule(long startPlace, long finishPlace);
+	long getScheduleIDByStartPlaceFinishPlaceTimeStart(long startPlace, long finishPlace, String timeStart);
 	
 }

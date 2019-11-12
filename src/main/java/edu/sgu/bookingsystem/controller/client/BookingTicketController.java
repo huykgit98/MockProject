@@ -27,6 +27,7 @@ import edu.sgu.bookingsystem.dao.impl.PlaceDAOImpl;
 import edu.sgu.bookingsystem.model.Customer;
 import edu.sgu.bookingsystem.model.Place;
 import edu.sgu.bookingsystem.model.Schedule;
+import edu.sgu.bookingsystem.model.Seat;
 import edu.sgu.bookingsystem.model.Ticket;
 import edu.sgu.bookingsystem.service.BookingTicketService;
 import edu.sgu.bookingsystem.service.CustomerService;
@@ -39,6 +40,8 @@ import edu.sgu.bookingsystem.service.impl.ScheduleServiceImpl;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @WebServlet(name = "BookingTicketController", urlPatterns = {"/BookingTicketController"})
 public class BookingTicketController extends HttpServlet {
@@ -80,6 +83,7 @@ public class BookingTicketController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("utf-8");
+		
 	    String fullName = (String) request.getParameter("fullname");
 	    String phoneNumber = (String) request.getParameter("phonenumber");
 	    String email = (String) request.getParameter("email");
@@ -91,11 +95,42 @@ public class BookingTicketController extends HttpServlet {
 	    String timeStart = (String) request.getParameter("timestart");
 	    String unitPrice = (String) request.getParameter("unitprice");
 	    String listSeatBooking = (String) request.getParameter("listseatbooking");
-
+	    
+	    
+	   ScheduleService scheduleService = new ScheduleServiceImpl();
+	   CustomerService cusService = new CustomerServiceImpl();
+	   //scheduleService.get
+	     BookingTicketService bookingTicketService = new BookingTicketServiceImpl();
+	   // bookingTicketService.getTicketInfo(startPlace, finishPlace, dateStart, timeStart);
+	    //các giá trị này sẽ insert vào db
+	    Long scheduleID1 = scheduleService.getScheduleIDByStartPlaceFinishPlaceTimeStart(Long.valueOf(startPlace), Long.valueOf(finishPlace), timeStart);
+	    Long cusID1 = cusService.getCustomerID(fullName,phoneNumber);
+	    String bookingDate1 = String.valueOf(LocalDateTime.now());
+	    
+	    //lưu đối tượng ticket
+	    Ticket ticket = new Ticket();
+	    ticket.setScheduleID(scheduleID1);
+	    ticket.setCusID(cusID1);
+	    ticket.setBookingDate(bookingDate1);
+	    ticket.setDateStart(dateStart);
+	    ticket.setFullName(fullName);
+	    ticket.setEmail(email);
+	    ticket.setAddress(address);
+	    ticket.setPhone(phoneNumber);
+	    ticket.setStatus(1);
+		String[] listSeatStringArr = listSeatBooking.split(",");
+		
+	    bookingTicketService.insertTicket(ticket, listSeatStringArr);
 	    System.out.println(fullName+" - "+phoneNumber+" - " +email+ " - "+address+ " - "+ startPlace + " - " +finishPlace+ " - " +dateStart +" - " +timeStart+ "- "+unitPrice+ " - "+listSeatBooking);
-		response.sendRedirect("BookingTicketController");
-
+		response.sendRedirect("LoginSuccessController");
+		
 	}
-
+//	public static void main(String[] args) {
+//		String listSeatBooking = "2,6,5,14,10,9,13";
+//		List<Seat> listseat = listSeatBooking.split(",");
+//		for (String string : listseat) {
+//		    System.out.println(string);
+//		}
+//	}
 
 }

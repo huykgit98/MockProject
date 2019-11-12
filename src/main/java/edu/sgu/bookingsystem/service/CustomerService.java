@@ -14,4 +14,7 @@ public interface CustomerService {
 	List<Customer> getAllCustomer(int page);
 	
 	List<Customer> searchCustomer(String search, int page);
+	
+	long getCustomerID(String fullname, String phone);
+
 }

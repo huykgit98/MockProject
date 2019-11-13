@@ -177,15 +177,7 @@ public class BookingTicketDAOImpl implements BookingTicketDAO {
 		try {
 			Connection dbConnection = null;
 			dbConnection = JDBCConnection.getConnection();
-			String sql="SELECT bt.TypeName, b.NumberPlate, b.SeatNum, s.Price, pS.PlaceName as 'StartPlace', pF.PlaceName as 'FinishPlace', bk.DateStart, s.TimeStart, bk.BookingID, bk.CusID, bk.Status, d.Seat " + 
-					"from schedule s " + 
-					"JOIN place pS ON (pS.PlaceID = s.StartPlace) " + 
-					"JOIN place pF ON (pF.PlaceID = s.FinishPlace) " + 
-					"JOIN bus b ON (b.BusID = s.BusID) " + 
-					"JOIN bus_type bt ON (b.TypeID = bt.TypeID) " + 
-					"JOIN booking bk ON (bk.ScheduleID = s.ScheduleID) " + 
-					"JOIN detail d ON (d.BookingID = bk.BookingID) " + 
-					"WHERE pS.PlaceID=? AND pF.PlaceID=? AND bk.Status = 1 AND bk.DateStart = ? AND s.TimeStart=? ";
+			String sql="SELECT bt.TypeName, b.NumberPlate, b.SeatNum, s.Price, pS.PlaceName as 'StartPlace', pF.PlaceName as 'FinishPlace', bk.DateStart, s.TimeStart, bk.BookingID, bk.CusID, bk.Status, d.Seat from schedule s JOIN place pS ON (pS.PlaceID = s.StartPlace) JOIN place pF ON (pF.PlaceID = s.FinishPlace) JOIN bus b ON (b.BusID = s.BusID) JOIN bus_type bt ON (b.TypeID = bt.TypeID) JOIN booking bk ON (bk.ScheduleID = s.ScheduleID) JOIN detail d ON (d.BookingID = bk.BookingID) WHERE pS.PlaceID=? AND pF.PlaceID=? AND bk.DateStart = ? AND s.TimeStart=?";
 			stmt = dbConnection.prepareStatement(sql);
 			stmt.setLong(1, startPlace);
 			stmt.setLong(2, finishPlace);
@@ -197,16 +189,16 @@ public class BookingTicketDAOImpl implements BookingTicketDAO {
 			while (rs.next()) {
 
 				Ticket ticket=new Ticket();
-				ticket.setTypeName(rs.getString("TypeName"));
-				ticket.setSeatNum(rs.getInt("SeatNum"));
-				ticket.setPrice(rs.getDouble("Price"));
-				ticket.setStartPlace(rs.getString("StartPlace"));
-				ticket.setFinishPlace(rs.getString("FinishPlace"));
-				ticket.setDateStart(rs.getString("DateStart"));
-				ticket.setTimeStart(rs.getString("TimeStart"));
-				ticket.setBookingID(rs.getLong("BookingID"));
-				ticket.setStatus(rs.getInt("Status"));
-				ticket.setSeat(rs.getInt("Seat"));
+//				ticket.setTypeName(rs.getString("TypeName"));
+//				ticket.setSeatNum(rs.getInt("SeatNum"));
+//				ticket.setPrice(rs.getDouble("Price"));
+//				ticket.setStartPlace(rs.getString("StartPlace"));
+//				ticket.setFinishPlace(rs.getString("FinishPlace"));
+//				ticket.setDateStart(rs.getString("DateStart"));
+//				ticket.setTimeStart(rs.getString("TimeStart"));
+//				ticket.setBookingID(rs.getLong("BookingID"));
+//				ticket.setStatus(rs.getInt("Status"));
+				ticket.setSeat(rs.getInt("d.Seat"));
 
 				listTicket.add(ticket);			
 
@@ -246,6 +238,7 @@ public class BookingTicketDAOImpl implements BookingTicketDAO {
 			while (rs.next()) {
 				Ticket tk = new Ticket();
 				tk.setBookingID(rs.getLong("BookingID"));
+				tk.setBookingDate(rs.getString("bk.BookingDate"));
 				tk.setStartPlace(rs.getString("pS.PlaceName"));
 				tk.setFinishPlace(rs.getString("pF.PlaceName"));
 				tk.setDateStart(String.valueOf(rs.getDate("DateStart")));
@@ -317,19 +310,45 @@ public class BookingTicketDAOImpl implements BookingTicketDAO {
 ////			System.out.println(string);
 ////		}
 //	}
-	public static void main(String[] args) {
-	BookingTicketDAO bkservice = new BookingTicketDAOImpl();
-	List<Ticket> items=bkservice.detailTicket(41, 6);
-//	System.out.println(items.size());
+//	public static void main(String[] args) {
+//	BookingTicketDAO bkservice = new BookingTicketDAOImpl();
+//	//List<Ticket> items=bkservice.detailTicket(41, 6);
+////	System.out.println(items.size());
+////	for(Ticket i:items){
+////	//System.out.println(i.getStartPlace());
+////	//System.out.println(i.getFinishPlace());
+////	System.out.println(i.getNumberPlate());
+////	System.out.println(i.getPrice());
+////	System.out.println(i.getSeat());
+////	System.out.println("");
+////
+////	}
+////	bkservice.cancelBooking(2);
+////(2,1,"2019-11-13","06:00:00")
+//	List<Ticket> items = bkservice.getSeatsBySchedule(2,1,"2019-11-13","06:00:00");
 //	for(Ticket i:items){
 //	//System.out.println(i.getStartPlace());
 //	//System.out.println(i.getFinishPlace());
-//	System.out.println(i.getNumberPlate());
-//	System.out.println(i.getPrice());
+////	System.out.println(i.getNumberPlate());
+////	System.out.println(i.getPrice());
 //	System.out.println(i.getSeat());
-//	System.out.println("");
+//	System.out.println("asd");
 //
 //	}
-//	bkservice.cancelBooking(2);
-}
+//	}
+//	public static void main(String[] args) {
+//		BookingTicketDAO bkservice = new BookingTicketDAOImpl();
+//		System.out.println("a1sd");
+////(1,7,"2019-11-15","20:00:00");
+//		List<Ticket> items = bkservice.getSeatsBySchedule(1,7,"2019-11-20","20:30:00");
+//		for(Ticket i:items){
+//			//System.out.println(i.getDateStart());
+//			//System.out.println(i.getStartPlace());
+//			//System.out.println(i.getFinishPlaceID());
+//
+//		System.out.println(i.getSeat());
+//		System.out.println("asd");
+//
+//		}
+//	}
 }

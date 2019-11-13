@@ -6,6 +6,7 @@ import java.util.List;
 public class Schedule {
 	
 	private long schedule_ID;
+	private long id;
 	private String timeStart;
 	private long startPlaceID;
 	private long finishPlaceID;
@@ -18,6 +19,15 @@ public class Schedule {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
 	public long getSchedule_ID() {
 		return schedule_ID;
 	}

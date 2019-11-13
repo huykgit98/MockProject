@@ -24,5 +24,4 @@ public class Place {
 	public void setPlaceName(String placeName) {
 		this.placeName = placeName;
 	}
-	
-}
+}	

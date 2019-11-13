@@ -289,7 +289,7 @@
                                          <select name="timestart" id="timestart" class="form-control">
                                          </select>
                                      </div>
-                                     <input type="text" value="" id="listseatbooking" name="listseatbooking">
+                                     <input type="hidden" value="" id="listseatbooking" name="listseatbooking">
                                      <div class="form-group">
                                          <label for="">Đơn giá vé</label>
                                          <input type = "number" name="unitprice" id="unitprice" readonly class="form-control">

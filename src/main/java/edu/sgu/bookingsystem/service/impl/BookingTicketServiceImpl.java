@@ -52,34 +52,34 @@ public class BookingTicketServiceImpl implements BookingTicketService {
 
 	}
 	
-//	public static void main(String[] args) {
-//	BookingTicketService bkservice = new BookingTicketServiceImpl();
-//	List<Ticket> items=bkservice.getSeatsBySchedule(1, 7, "2019-11-11", "20:00:00");
-//	System.out.println(items.size());
-//	for(Ticket i:items){
-//	//System.out.println(i.getStartPlace());
-//	//System.out.println(i.getFinishPlace());
-//	//System.out.println(i.getDateStart());
-//	//System.out.println(i.getTimeStart());
-//	System.out.println(i.getSeat());
-//	System.out.println("");
-//
-//	}
-//}
 	public static void main(String[] args) {
 	BookingTicketService bkservice = new BookingTicketServiceImpl();
-	List<Ticket> items=bkservice.detailTicket(41, 6);
+	List<Ticket> items=bkservice.getSeatsBySchedule(2,1,"2019-11-13","06:00:00");
 	System.out.println(items.size());
 	for(Ticket i:items){
 	//System.out.println(i.getStartPlace());
 	//System.out.println(i.getFinishPlace());
-	System.out.println(i.getNumberPlate());
-	System.out.println(i.getPrice());
+	//System.out.println(i.getDateStart());
+	//System.out.println(i.getTimeStart());
 	System.out.println(i.getSeat());
 	System.out.println("");
 
 	}
 }
+//	public static void main(String[] args) {
+//	BookingTicketService bkservice = new BookingTicketServiceImpl();
+//	List<Ticket> items=bkservice.detailTicket(41, 6);
+//	System.out.println(items.size());
+//	for(Ticket i:items){
+//	//System.out.println(i.getStartPlace());
+//	//System.out.println(i.getFinishPlace());
+//	System.out.println(i.getNumberPlate());
+//	System.out.println(i.getPrice());
+//	System.out.println(i.getSeat());
+//	System.out.println("");
+//
+//	}
+//}
 
 
 	

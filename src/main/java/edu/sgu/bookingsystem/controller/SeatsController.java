@@ -66,7 +66,7 @@ public class SeatsController extends HttpServlet {
 
 					//	listSeat = bookingTicketService.getSeatsBySchedule(1,7,"2019-11-11","20:00:00");
 			            String jsonListSeat = Obj.writeValueAsString(listSeat); 
-			            response.setContentType("application/json");
+   			            response.setContentType("application/json");
 			            response.setCharacterEncoding("UTF-8");
 						response.getWriter().write(jsonListSeat);
 
@@ -112,7 +112,7 @@ public class SeatsController extends HttpServlet {
 
 			//listSeat = bookingTicketService.getSeatsBySchedule(1,7,3,time);
 
-				listSeat = bookingTicketService.getSeatsBySchedule(1,7,"2019-11-12","20:00:00");
+				listSeat = bookingTicketService.getSeatsBySchedule(2,1,"2019-11-13","06:00:00");
 	            String jsonListSeat = Obj.writeValueAsString(listSeat); 
 	            System.out.println(jsonListSeat);
 

@@ -52,15 +52,15 @@ public class PlaceDAOImpl implements PlaceDAO {
 		} 
 	}
 	
-//	public static void main(String[] args) {
-//		PlaceDAO placedao = new PlaceDAOImpl();
-//		
-//		List<Place> items=placedao.getPlaces();;
-//		//System.out.println(items.size());
-//		for(Place i:items){
-//		System.out.println(i.getId());
-//		//System.out.println(i.getPlaceName());
-//		}
-//		
-//	}
+	public static void main(String[] args) {
+		PlaceDAO placedao = new PlaceDAOImpl();
+		
+		List<Place> items=placedao.getPlaces();;
+		//System.out.println(items.size());
+		for(Place i:items){
+		System.out.println(i.getId());
+		//System.out.println(i.getPlaceName());
+		}
+		
+	}
 }

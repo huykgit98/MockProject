@@ -64,7 +64,4 @@ public class Bus {
 		this.emp_ID = emp_ID;
 		this.status = status;
 	}
-	
-	
-
 }

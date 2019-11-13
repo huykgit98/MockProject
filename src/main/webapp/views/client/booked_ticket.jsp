@@ -134,6 +134,7 @@
 					<thead>
 						<tr>
 							<th class="col-3 col-sm-2">Mã vé</th>
+							<th class="col-3 col-sm-2">Thời gian đặt</th>							
 							<th class="col-3 col-sm-2">Điêm khởi hành</th>
 							<th class="col-3 col-sm-2">Điểm đến</th>
 							<th class="col-3 col-sm-2">Ngày chạy</th>
@@ -151,6 +152,7 @@
 						<c:forEach items="${listTicketOfCustomer}" var="lTicket">
 							<tr>
 								<td>${lTicket.bookingID }</td>
+								<td>${lTicket.bookingDate }</td>								
 								<td>${lTicket.startPlace }</td>
 								<td>${lTicket.finishPlace }</td>
 								<td>${lTicket.dateStart }</td>
@@ -179,7 +181,7 @@
 								<c:if test="${lTicket.status == 1}">
 									<p data-placement="top" data-toggle="tooltip" title="Hủy">
 										<a class="btn btn-danger btn-xs" type="submit"
-											style="margin-left: 30%" href="CancelTicketController?bookingid=${lTicket.bookingID}"
+											style="margin-left: 30%" href="list_TicketController?bookingid=${lTicket.bookingID}"
 											>
 											<span class="glyphicon glyphicon-remove" style="color: white"></span>
 										</a>

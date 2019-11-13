@@ -18,7 +18,7 @@ import edu.sgu.bookingsystem.service.impl.BookingTicketServiceImpl;
 /**
  * Servlet implementation class CancelTicketController
  */
-@WebServlet(name="CancelTicketController",urlPatterns = {"/CancelTicketController"})
+@WebServlet(name="CancelTicketController",urlPatterns = {"/list_TicketController"})
 public class CancelTicketController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	BookingTicketService ticketService = null;
@@ -43,9 +43,9 @@ public class CancelTicketController extends HttpServlet {
 				//Long id=(Long) ( request.getSession().getAttribute("customerid"));
 				int tk = ticketService.cancelBooking(Long.valueOf(idBooking));
 				
-				request.setAttribute("listDetailBooking", tk);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("views/client/detailBookingCustomer.jsp");
-				dispatcher.forward(request, response);
+				request.setAttribute("canceledticket", tk);
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("/listTicketController");
+				requestDispatcher.forward(request, response);
 			
 
 		}

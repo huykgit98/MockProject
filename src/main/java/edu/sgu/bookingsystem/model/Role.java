@@ -1,4 +1,5 @@
 package edu.sgu.bookingsystem.model;
+
 public class Role {
 	private long id;
 	private String name;
@@ -31,5 +32,4 @@ public class Role {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
 }

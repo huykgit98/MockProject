@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<p>day la index cua admin</p>
+<h2>OK</h2>
 </body>
 </html>

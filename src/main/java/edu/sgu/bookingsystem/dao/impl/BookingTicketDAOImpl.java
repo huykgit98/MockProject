@@ -80,7 +80,7 @@ public class BookingTicketDAOImpl implements BookingTicketDAO {
 				}
 
 				System.out.println(lastBookingID);
-				String sql = "INSERT INTO detail (`BookingID`, `Seat`, `Status`) VALUES(?,?,?)";
+				String sql = "INSERT INTO detail (`BookingID`, `Seat`, `status`) VALUES(?,?,?)";
 				PreparedStatement stmt=conn.prepareStatement(sql);
 				int size = listSeatStringArr.length;
 				for (String string : listSeatStringArr)  {		
@@ -276,7 +276,7 @@ public class BookingTicketDAOImpl implements BookingTicketDAO {
 				tk.setSeat(rs.getInt("d.Seat"));
 				tk.setPrice(rs.getDouble("s.Price"));
 				tk.setNumberPlate(rs.getString("b.NumberPlate"));
-				tk.setStatus(rs.getInt("d.Status"));
+				tk.setStatus(rs.getInt("d.status"));
 				ticketList.add(tk);
 			}
 

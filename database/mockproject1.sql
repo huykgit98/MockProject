@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2019 at 05:05 PM
+-- Generation Time: Nov 13, 2019 at 05:34 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -26,6 +26,18 @@ DELIMITER $$
 --
 -- Procedures
 --
+CREATE DEFINER=`root`@`localhost` PROCEDURE `cancelTicket` (`iId` BIGINT(20), `iSeat` INT(11))  BEGIN
+	START TRANSACTION;
+	UPDATE schedule, booking, detail, customers
+	SET
+        detail.status = 0
+    WHERE booking.ScheduleID = schedule.ScheduleID AND booking.BookingID =detail.BookingID 
+    AND Booking.CusID = customers.CusID AND  booking.BookingID= iId AND detail.Seat= iSeat AND booking.Status = 1; 
+    
+    
+    COMMIT;
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `demo_insert_user_multiple_tables` (`UserName` VARCHAR(100), `FullName` VARCHAR(255), `Address` VARCHAR(255), `Phone` VARCHAR(10), `RoleID` BIGINT(20))  BEGIN
 	DECLARE RETURN_VAL bigint(20) DEFAULT 0 ;
    START TRANSACTION;
@@ -58,6 +70,27 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `demo_update_multiple_tables` (`uEmp
    COMMIT;
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `new_procedurev2` (`newScheduleID` BIGINT(20), `newCusID` BIGINT(20), `uSeat` BIGINT(1))  BEGIN
+DECLARE RETURN_VAL bigint(20) DEFAULT 0 ;
+   START TRANSACTION;
+
+   INSERT INTO booking( ScheduleID , CusID  , Description, Status )
+   VALUES (newScheduleID , newCusID  ,'Signature!!', 1);
+   SET RETURN_VAL = LAST_INSERT_ID() ;
+   SELECT RETURN_VAL;
+   
+    UPDATE detail, booking
+     SET 
+     detail.BookingID = LAST_INSERT_ID(),
+     detail.status = 1
+   WHERE detail.Seat = uSeat AND booking.BookingID = detail.BookingID;
+   
+   
+   
+   
+   COMMIT;
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `show_booking_customer` (IN `sIdCustomer` BIGINT(20))  BEGIN
 START TRANSACTION;
 
@@ -66,10 +99,10 @@ SELECT DISTINCT(bt.TypeName),bk.BookingDate, bk.Status, b.NumberPlate, s.Price, 
 COMMIT;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertDetail` (`bookingID` BIGINT(200), `seat` INT(11), `status` INT(11))  BEGIN  
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertDetail` (IN `bookingID` BIGINT(200), IN `seat` INT(11), IN `status` INT(11))  BEGIN  
 	DECLARE RETURN_VAL bigint(20) DEFAULT 0 ;
    START TRANSACTION;
-	INSERT INTO detail (BookingID, Seat, Status)
+	INSERT INTO detail (BookingID, Seat, status)
 	VALUES (bookingID, seat, status);
 
    COMMIT;
@@ -82,14 +115,14 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `spSelectBookingIDByBookingInfo` (`s
    COMMIT;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_cancel_ticket` (`scheduleID` BIGINT(20))  BEGIN  
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_cancel_ticket` (IN `scheduleID` BIGINT(20))  BEGIN  
    START TRANSACTION;
 	Update booking set Status =0 WHERE BookingID = scheduleID;
-	Update detail set Status =0 WHERE BookingID = scheduleID AND Status = 1;
+	Update detail set Status =0 WHERE BookingID = scheduleID AND status = 1;
    COMMIT;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_insert_booking_update_customer` (`scheduleID` BIGINT(20), `cusID` BIGINT(20), `bookingDate` DATETIME, `dateStart` DATE, `status_booking` INT(1), `Email` VARCHAR(255), `fullName` VARCHAR(255), `address` VARCHAR(255), `phone` VARCHAR(10))  BEGIN  
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_insert_booking_update_customer` (IN `scheduleID` BIGINT(20), IN `cusID` BIGINT(20), IN `bookingDate` DATETIME, IN `dateStart` DATE, IN `status_booking` INT(1), IN `Email` VARCHAR(255), IN `fullName` VARCHAR(255), IN `address` VARCHAR(255), IN `phone` VARCHAR(10))  BEGIN  
 	DECLARE RETURN_VAL bigint(20) DEFAULT 0 ;
    START TRANSACTION;
 	INSERT INTO booking (BookingID, ScheduleID, CusID, BookingDate, Datestart, Status)
@@ -99,6 +132,46 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_insert_booking_update_customer` 
    SET RETURN_VAL = LAST_INSERT_ID() ;
    SELECT RETURN_VAL;
    COMMIT;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `update4tablenew` (`uName` VARCHAR(255), `uEmail` VARCHAR(255), `uAddress` VARCHAR(255), `uPhone` VARCHAR(255), `newSeat` INT(11), `iId` BIGINT(20), `iSeat` INT(11))  BEGIN
+	START TRANSACTION;
+    
+    Update schedule, booking, detail, customers
+    set
+            detail.status = 0 
+	where	
+		booking.ScheduleID = schedule.ScheduleID AND booking.BookingID =detail.BookingID 
+    AND Booking.CusID = customers.CusID  AND
+    booking.BookingID= iId AND detail.Seat= iSeat ; 
+    
+    Update schedule, booking, detail, customers
+    set
+			customers.FullName = uName,
+            customers.Email = uEmail,
+            customers.Address = uAddress,
+            customers.Phone = uPhone,
+            detail.status = 1 
+	where	
+		booking.ScheduleID = schedule.ScheduleID AND booking.BookingID =detail.BookingID 
+    AND Booking.CusID = customers.CusID  AND
+    booking.BookingID= iId AND detail.Seat= newSeat ; 
+ 
+    COMMIT;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `updateSeat` (`newStatus` INT(1), `iId` BIGINT(20), `iSeat` INT(11))  BEGIN
+	START TRANSACTION;
+    
+    Update schedule, booking, detail, customers
+    set
+            detail.status = newStatus 
+	where	
+		booking.ScheduleID = schedule.ScheduleID AND booking.BookingID =detail.BookingID 
+    AND Booking.CusID = customers.CusID  AND
+    booking.BookingID= iId AND detail.Seat= iSeat ; 
+ 
+    COMMIT;
 END$$
 
 DELIMITER ;
@@ -228,14 +301,14 @@ INSERT INTO `customers` (`CusID`, `Email`, `Password`, `FullName`, `Address`, `P
 CREATE TABLE `detail` (
   `BookingID` bigint(20) NOT NULL,
   `Seat` int(11) NOT NULL,
-  `Status` int(1) NOT NULL DEFAULT '0'
+  `status` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `detail`
 --
 
-INSERT INTO `detail` (`BookingID`, `Seat`, `Status`) VALUES
+INSERT INTO `detail` (`BookingID`, `Seat`, `status`) VALUES
 (1, 1, 1),
 (1, 2, 1),
 (1, 3, 1),

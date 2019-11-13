@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2019 at 04:57 PM
+-- Generation Time: Nov 13, 2019 at 05:05 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -26,6 +26,38 @@ DELIMITER $$
 --
 -- Procedures
 --
+CREATE DEFINER=`root`@`localhost` PROCEDURE `demo_insert_user_multiple_tables` (`UserName` VARCHAR(100), `FullName` VARCHAR(255), `Address` VARCHAR(255), `Phone` VARCHAR(10), `RoleID` BIGINT(20))  BEGIN
+	DECLARE RETURN_VAL bigint(20) DEFAULT 0 ;
+   START TRANSACTION;
+   INSERT INTO employee(EmpID,FullName,Address,Phone,Status)
+   VALUES ('',FullName,Address,Phone,'0');
+   INSERT INTO employee_role(EmpID,RoleID)
+   VALUES (LAST_INSERT_ID(),RoleID);
+   INSERT INTO users(UserID,UserName,PassWord,EmpID,Status)
+   VALUES ('',UserName,'123456',LAST_INSERT_ID(),'1');
+   SET RETURN_VAL = LAST_INSERT_ID() ;
+   SELECT RETURN_VAL;
+   COMMIT;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `demo_update_multiple_tables` (`uEmpID` BIGINT(20), `uUserName` VARCHAR(100), `uFullName` VARCHAR(255), `uAddress` VARCHAR(255), `uPhone` VARCHAR(10), `uRoleID` BIGINT(20))  BEGIN
+   START TRANSACTION;
+   UPDATE employee
+   SET
+		FullName =uFullName,
+        Address = uAddress,
+        Phone =uPhone
+    WHERE   EmpID=uEmpID;
+   UPDATE employee_role
+     SET 
+  	 RoleID=uRoleID
+   WHERE EmpID=uEmpID;
+   UPDATE users
+   SET UserName=uUserName
+   WHERE EmpID=uEmpID;
+   COMMIT;
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `show_booking_customer` (IN `sIdCustomer` BIGINT(20))  BEGIN
 START TRANSACTION;
 

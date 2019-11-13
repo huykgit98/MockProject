@@ -60,13 +60,13 @@ public class BookingTicketController extends HttpServlet {
 		Customer customer = new Customer(email, password);
 		//tạo các đối tượng service để lấy thông tin
 		PlaceService placeService = new PlaceServiceImpl();
-		ScheduleService scheduleService = new ScheduleServiceImpl();
-		BookingTicketService bookingTicketService = new BookingTicketServiceImpl();
 
 		CustomerService customerService = new CustomerServiceImpl();
 		
 		customer = customerService.getCustomer(customer);
 		request.setAttribute("customerinfo", customer);
+	//	Place a = new Place();
+	
 		List<Place> placeList = placeService.getPlaces();
 		request.setAttribute("placeList", placeList);
 		
@@ -93,7 +93,6 @@ public class BookingTicketController extends HttpServlet {
 	    String finishPlace = (String) request.getParameter("finishplace");
 	    String dateStart = (String) request.getParameter("datestart");
 	    String timeStart = (String) request.getParameter("timestart");
-	    String unitPrice = (String) request.getParameter("unitprice");
 	    String listSeatBooking = (String) request.getParameter("listseatbooking");
 	    
 	    
@@ -121,8 +120,8 @@ public class BookingTicketController extends HttpServlet {
 		String[] listSeatStringArr = listSeatBooking.split(",");
 		
 	    bookingTicketService.insertTicket(ticket, listSeatStringArr);
-	    System.out.println(fullName+" - "+phoneNumber+" - " +email+ " - "+address+ " - "+ startPlace + " - " +finishPlace+ " - " +dateStart +" - " +timeStart+ "- "+unitPrice+ " - "+listSeatBooking);
-		response.sendRedirect("LoginSuccessController");
+	//    System.out.println(fullName+" - "+phoneNumber+" - " +email+ " - "+address+ " - "+ startPlace + " - " +finishPlace+ " - " +dateStart +" - " +timeStart+ "- "+unitPrice+ " - "+listSeatBooking);
+		response.sendRedirect("BookedSuccessController");
 		
 	}
 //	public static void main(String[] args) {

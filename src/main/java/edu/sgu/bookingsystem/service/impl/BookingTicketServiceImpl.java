@@ -32,6 +32,25 @@ public class BookingTicketServiceImpl implements BookingTicketService {
 	public int insertTicket(Ticket ticket, String[] listSeatStringArr) {
 		return bookingticketdao.insertBooking(ticket, listSeatStringArr);
 	}
+
+	@Override
+	public ArrayList<Ticket> getAllTicket(long id) {
+		ArrayList<Ticket> listTicket= new ArrayList<Ticket>();
+		listTicket = bookingticketdao.getAllTicket(id);
+		return listTicket;
+	}
+
+	@Override
+	public ArrayList<Ticket> detailTicket(long idCus, long idBook) {
+		ArrayList<Ticket> listTicket= new ArrayList<Ticket>();
+		listTicket = bookingticketdao.detailTicket(idCus, idBook);
+		return listTicket;
+	}
+	@Override
+	public int cancelBooking(long bookingID) {
+		return bookingticketdao.cancelBooking(bookingID);
+
+	}
 	
 //	public static void main(String[] args) {
 //	BookingTicketService bkservice = new BookingTicketServiceImpl();
@@ -47,5 +66,21 @@ public class BookingTicketServiceImpl implements BookingTicketService {
 //
 //	}
 //}
+	public static void main(String[] args) {
+	BookingTicketService bkservice = new BookingTicketServiceImpl();
+	List<Ticket> items=bkservice.detailTicket(41, 6);
+	System.out.println(items.size());
+	for(Ticket i:items){
+	//System.out.println(i.getStartPlace());
+	//System.out.println(i.getFinishPlace());
+	System.out.println(i.getNumberPlate());
+	System.out.println(i.getPrice());
+	System.out.println(i.getSeat());
+	System.out.println("");
+
+	}
+}
+
+
 	
 }

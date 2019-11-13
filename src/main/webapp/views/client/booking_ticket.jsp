@@ -200,30 +200,59 @@
                                  
                                      <h3 class="text-uppercase">Thông tin hành khách</h3>
                                      <%
-										if (request.getAttribute("customerinfo") != null) {
-											Customer customer = (Customer) request.getAttribute("customerinfo");
-									%> 
+                                     
+									//	if (request.getAttribute("customerinfo") != null) {
+									//		Customer customer = (Customer) request.getAttribute("customerinfo");
+									
+									%>
+									<c:if test="${not empty customerinfo}" >
+									<c:set var="customer" value='${requestScope["customerinfo"]}' />
+									
+									 
                                      <div class="form-group">
                                          <label for="">Họ tên</label>
-                                         <input type="text" name="fullname" value="<%=customer.getFullName()%>" class="form-control"/>
+                                         <input type="text" name="fullname" value="${customer.fullName}" class="form-control"/>
                                      </div>
                                      <div class="form-group">
                                          <label for="">Số điện thoai</label>
-                                         <input type="phone" name="phonenumber" value="<%=customer.getPhone()%>" class="form-control"/>
+                                         <input type="phone" name="phonenumber" value="${customer.phone}" class="form-control"/>
                                      </div>
                                       <div class="form-group">
                                          <label for="">Email</label>
-                                         <input type="email" name="email" value="<%=customer.getEmail()%>" class="form-control"/>
+                                         <input type="email" name="email" value="${customer.email}" class="form-control"/>
                                      </div>
                                      
                                      <div class="form-group">
                                          <label for="">Địa chỉ</label>
-                                         <input type="text" name="address" value="<%=customer.getAddress()%>" class="form-control"/>
+                                         <input type="text" name="address" value="${customer.address}" class="form-control"/>
                                      </div>
+                                    </c:if>
+                                    
+									<c:if test="${empty customerinfo}" >
+										<div class="form-group">
+	                                         <label for="">Họ tên</label>
+	                                         <input type="text" name="fullname" value="" class="form-control"/>
+	                                     </div>
+	                                     <div class="form-group">
+	                                         <label for="">Số điện thoai</label>
+	                                         <input type="phone" name="phonenumber" value="" class="form-control"/>
+	                                     </div>
+	                                      <div class="form-group">
+	                                         <label for="">Email</label>
+	                                         <input type="email" name="email" value="" class="form-control"/>
+	                                     </div>
+	                                     
+	                                     <div class="form-group">
+	                                         <label for="">Địa chỉ</label>
+	                                         <input type="text" name="address" value="" class="form-control"/>
+	                                     </div>
+                                     </c:if>
                                     
                                     <%
-							}
-						%>
+										//}
+									 
+									%> 
+									 
                              </div>
                              
                              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-ms-12">

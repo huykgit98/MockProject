@@ -10,7 +10,7 @@ public class JDBCConnection {
 	//Database Driver
 		private static final String driver = "com.mysql.jdbc.Driver";
 		//url connected to database
-		private static final String url = "jdbc:mysql://localhost:3306/mockproject";
+		private static final String url = "jdbc:mysql://localhost:3306/mockproject1";
 		//Database username
 		private static final String username = "root";
 		//Database password

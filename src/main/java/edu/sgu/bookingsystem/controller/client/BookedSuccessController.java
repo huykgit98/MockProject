@@ -9,11 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "LoginSuccessController", urlPatterns = {"/LoginSuccessController"})
-public class LoginSuccessController extends HttpServlet {
+@WebServlet(name = "BookedSuccessController", urlPatterns = {"/BookedSuccessController"})
+public class BookedSuccessController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public LoginSuccessController() {
+    public BookedSuccessController() {
         super();
         // TODO Auto-generated constructor stub
     }

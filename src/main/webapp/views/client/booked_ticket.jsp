@@ -19,6 +19,7 @@
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/client/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/client/plugins/flexslider/jquery.flexslider-min.js"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/client/js/theme.js"></script>
+
     </head>
     <body>
         <div id="page">
@@ -88,113 +89,110 @@
                   
               </div>
               
+          
+                 <link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<script>
+	$(document).ready(function() {
+		$('#datatable').dataTable();
+
+		$("[data-toggle=tooltip]").tooltip();
+
+	});
+</script>
+<!------ Include the above in your HEAD tag ---------->
+
+<script language="JavaScript"
+	src="https://code.jquery.com/jquery-1.11.1.min.js"
+	type="text/javascript"></script>
+<script language="JavaScript"
+	src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"
+	type="text/javascript"></script>
+<script language="JavaScript"
+	src="https://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.js"
+	type="text/javascript"></script>
+<link rel="stylesheet" type="text/css"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+<link rel="stylesheet" type="text/css"
+	href="http://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.css">
               <div class="container">
-                  <div class="row">
-                      <form action="" id="forgot-pass">
-                         <div class="form-group col-lg-2 col-md-2 col-sm-6 col-sm-12 col-xs-12">
-                             <label for="">Thời gian</label>
-                             <input type="text" name="" class="form-control"/>
-                         </div>
-                         <div class="form-group col-lg-2 col-md-2 col-sm-6 col-sm-12 col-xs-12">
-                             <label for="">Phân loại</label>
-                             <select name="" class="form-control" id="">
-                                 <option>Value 1</option>
-                                 <option>Value 1</option>
-                                 <option>Value 1</option>
-                                 <option>Value 1</option>
-                             </select>
-                         </div>
-                         <div class="form-group col-lg-2 col-md-2 col-sm-6 col-sm-12 col-xs-12">
-                             <label for="">Tuyến đường</label>
-                             <input type="text" name="" class="form-control"/>
-                         </div>
-                         <div class="form-group col-lg-2 col-md-2 col-sm-6 col-sm-12 col-xs-12">
-                             <label for="">Trạng thái</label>
-                             <select name="" class="form-control" id="">
-                                 <option>Value 1</option>
-                                 <option>Value 1</option>
-                                 <option>Value 1</option>
-                                 <option>Value 1</option>
-                             </select>
-                         </div>
-                         <div class="form-group col-lg-2 col-md-2 col-sm-6 col-sm-12 col-xs-12">
-                             <label for="">Từ khóa</label>
-                             <input type="text" name="" class="form-control"/>
-                         </div>
-                         <div class="form-group col-lg-2 col-md-2 col-sm-6 col-sm-12 col-xs-12">
-                             <label for="">&nbsp;</label>
-                             <button class="btn btn-primary btn-flat btn-block"> <i class="fa fa-search icon-flat bg-btn-actived"></i> Tìm</button>
-                                
-                             
-                         </div>
-                      </form>
-                  </div>
-              </div>
-              
-              <div class="container">
-                  <table class="table text-center ">
-                      <tr class="bg-success text-white">
-                          <td>STT</td>
-                          <td>Mã</td>
-                          <td>Số lượng</td>
-                          <td>Tuyến</td>
-                          <td>Ngày đi</td>
-                          <td>Giờ</td>
-                          <td>Tổng tiền</td>
-                          <td>Ngày đặt</td>
-                          <td>Trạng thái</td>
-                          <td>Tác vụ</td>
-                      </tr>
-                      <tr>
-                          <td>1</td>
-                          <td class="code">SDGS</td>
-                          <td>1</td>
-                          <td>SG - Đà Lạt</td>
-                          <td>10-10-2010</td>
-                          <td>10hAM</td>
-                          <td>100.000 đ</td>
-                          <td>08-10-2010</td>
-                          <td>đã đặt</td>
-                          <td><a href="#" title="hủy vé đặt"><i class="fa fa-close" "></i></a></td>
-                      </tr>
-                      <tr>
-                          <td>1</td>
-                          <td class="code">SDGS</td>
-                          <td>1</td>
-                          <td>SG - Đà Lạt</td>
-                          <td>10-10-2010</td>
-                          <td>10hAM</td>
-                          <td>100.000 đ</td>
-                          <td>08-10-2010</td>
-                          <td>đã đặt</td>
-                          <td></td>
-                      </tr>
-                      <tr>
-                          <td>1</td>
-                          <td class="code">SDGS</td>
-                          <td>1</td>
-                          <td>SG - Đà Lạt</td>
-                          <td>10-10-2010</td>
-                          <td>10hAM</td>
-                          <td>100.000 đ</td>
-                          <td>08-10-2010</td>
-                          <td>đã hủy</td>
-                          <td></td>
-                      </tr>
-                      <tr>
-                          <td>1</td>
-                          <td class="code">SDGS</td>
-                          <td>1</td>
-                          <td>SG - Đà Lạt</td>
-                          <td>10-10-2010</td>
-                          <td>10hAM</td>
-                          <td>100.000 đ</td>
-                          <td>08-10-2010</td>
-                          <td>đã hủy</td>
-                          <td></td>
-                      </tr>
-                     
-                  </table>
+                  <table id="datatable" class="table table-striped table-bordered"
+					cellspacing="0" width="100%">
+					<thead>
+						<tr>
+							<th class="col-3 col-sm-2">Mã vé</th>
+							<th class="col-3 col-sm-2">Điêm khởi hành</th>
+							<th class="col-3 col-sm-2">Điểm đến</th>
+							<th class="col-3 col-sm-2">Ngày chạy</th>
+							<th class="col-3 col-sm-2">Thời gian chạy</th>
+							
+							<th class="col-3 col-sm-2">Xem chi tiết</th>
+							<th class="col-3 col-sm-2">Trạng thái</th>
+							
+							<th class="col-3 col-sm-2">Hủy</th>
+							
+						</tr>
+					</thead>
+
+					<tbody>
+						<c:forEach items="${listTicketOfCustomer}" var="lTicket">
+							<tr>
+								<td>${lTicket.bookingID }</td>
+								<td>${lTicket.startPlace }</td>
+								<td>${lTicket.finishPlace }</td>
+								<td>${lTicket.dateStart }</td>
+								<td>${lTicket.timeStart }</td>
+								<td>
+									<p data-placement="top" data-toggle="tooltip" title="Chi tiết">
+										<a class="btn btn-primary btn-xs" type="submit"
+											style="margin-left: 30%" href="detailTicKetController?action=viewdetails&bookingid=${lTicket.bookingID}"
+											>
+											<span class="glyphicon glyphicon-th-list" style="color: white"></span>
+										</a>
+									</p>
+
+								</td>
+								<td>
+								<c:if test="${lTicket.status == 1}">Đã đặt
+	
+							     </c:if>
+							     <c:if test="${lTicket.status == 0}">Đã hủy
+	
+							     </c:if>
+							    
+								</td>
+								
+								<td>
+								<c:if test="${lTicket.status == 1}">
+									<p data-placement="top" data-toggle="tooltip" title="Hủy">
+										<a class="btn btn-danger btn-xs" type="submit"
+											style="margin-left: 30%" href="CancelTicketController?bookingid=${lTicket.bookingID}"
+											>
+											<span class="glyphicon glyphicon-remove" style="color: white"></span>
+										</a>
+									</p>
+									</c:if>
+									<c:if test="${lTicket.status == 0}">Quý khách đã hủy vé
+	
+							     </c:if>
+								</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
               </div>
               
             </section>

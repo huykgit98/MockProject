@@ -88,7 +88,8 @@
 								  <a href="${customerlogininfo}" ><i class="fa fa-user-secret"></i> Thông tin đăng nhập</a>
 		                          <c:url value="/CustomerInfoController?param=infoCustomer" var="customerinfo"/>       
 								  <a href="${customerinfo}" ><i class="fa fa-info"></i> Thông tin cá nhân</a>
-								  <a href="${pageContext.request.contextPath}/views/client/booked_ticket.jsp" ><i class="fa fa-ticket"></i> Lịch sử đặt vé</a>								  								  								   								  
+		                          <c:url value="/listTicketController" var="bookedticket"/>       								  
+								  <a href="${bookedticket}" ><i class="fa fa-ticket"></i> Lịch sử đặt vé</a>								  								  								   								  
 							      <a href="${pageContext.request.contextPath}/LoginClienController?param=logout"><i class="fa fa-sign-out"></i> Đăng xuất</a>
 								  </div>
                             </li>

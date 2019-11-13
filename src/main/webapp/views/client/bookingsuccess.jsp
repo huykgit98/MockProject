@@ -67,7 +67,7 @@
                                     <span class="text-muted">Cảm ơn quý khách đã sử dụng dịch vụ đặt vé của chúng tui.</span>
                                 </p>
 								<p class="text-center">
-                                    <a href="${pageContext.request.contextPath}/BookingTicketController"><button class="btn btn-primary">Xem lịch sử vé đã đặt</button></a>
+                                    <a href="${pageContext.request.contextPath}/listTicketController"><button class="btn btn-primary">Xem lịch sử vé đã đặt</button></a>
                                 </p>
                                 <p class="text-center">Quý khách vui lòng có mặt trước 15 tại bến xe trước khi khởi hành, để làm thủ tục lên xe.</p>
                             

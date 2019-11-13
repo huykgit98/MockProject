@@ -16,6 +16,8 @@ import edu.sgu.bookingsystem.dao.BookingTicketDAO;
 
 import edu.sgu.bookingsystem.model.Seat;
 import edu.sgu.bookingsystem.model.Ticket;
+import edu.sgu.bookingsystem.service.BookingTicketService;
+import edu.sgu.bookingsystem.service.impl.BookingTicketServiceImpl;
 
 
 public class BookingTicketDAOImpl implements BookingTicketDAO {
@@ -27,8 +29,22 @@ public class BookingTicketDAOImpl implements BookingTicketDAO {
 
 
 	@Override
-	public int cancelBooking(Ticket ticket) {
-		return 0;
+	public int cancelBooking(long bookingID) {
+		//call sp_cancel_ticket(1)
+		// TODO Auto-generated method stub
+				try {
+					Connection conn = JDBCConnection.getConnection();
+					CallableStatement cs = conn.prepareCall("{CALL sp_cancel_ticket(?)}");
+					cs.setLong(1, bookingID);
+					cs.executeUpdate();
+
+					return 1;
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					e.getMessage();
+					return 0;
+				}
 		
 	}
 
@@ -217,6 +233,68 @@ public class BookingTicketDAOImpl implements BookingTicketDAO {
 		} 
 	}
 
+
+	@Override
+	public ArrayList<Ticket> getAllTicket(long id) {
+		// TODO Auto-generated method stub
+		try {
+			ArrayList<Ticket> listTicket = new ArrayList<Ticket>();
+			Connection conn = JDBCConnection.getConnection();
+			CallableStatement cs = conn.prepareCall("{CALL show_booking_customer(?)}");
+			cs.setLong(1, id);
+			ResultSet rs = cs.executeQuery();
+			while (rs.next()) {
+				Ticket tk = new Ticket();
+				tk.setBookingID(rs.getLong("BookingID"));
+				tk.setStartPlace(rs.getString("pS.PlaceName"));
+				tk.setFinishPlace(rs.getString("pF.PlaceName"));
+				tk.setDateStart(String.valueOf(rs.getDate("DateStart")));
+				tk.setTimeStart(rs.getString("TimeStart"));
+				tk.setStatus(rs.getInt("Status"));
+				listTicket.add(tk);
+			}
+			return listTicket;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			e.getMessage();
+			return null;
+		}
+	}
+
+	@Override
+	public ArrayList<Ticket> detailTicket(long idCus,long idBook) {
+		ArrayList<Ticket> ticketList = new ArrayList<Ticket>();
+
+		try {
+			PreparedStatement stmt =null;
+			Connection dbConnection = null;
+			dbConnection = JDBCConnection.getConnection();
+			String  sql="SELECT d.Seat,s.Price,b.NumberPlate, d.Status from schedule s JOIN bus b ON (b.BusID = s.BusID) JOIN booking bk ON (bk.ScheduleID = s.ScheduleID) JOIN detail d ON (d.BookingID = bk.BookingID) WHERE bk.BookingID=? AND bk.CusID =?";
+			stmt = dbConnection.prepareStatement(sql);
+			stmt.setLong(1, idBook);
+			stmt.setLong(2, idCus);
+
+			ResultSet rs = stmt.executeQuery();
+
+			while (rs.next()) {
+
+				Ticket tk = new Ticket();
+				tk.setSeat(rs.getInt("d.Seat"));
+				tk.setPrice(rs.getDouble("s.Price"));
+				tk.setNumberPlate(rs.getString("b.NumberPlate"));
+				tk.setStatus(rs.getInt("d.Status"));
+				ticketList.add(tk);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+		}
+
+		return ticketList;
+	}
+
 	
 
 //	public static void main(String[] args) {
@@ -239,5 +317,19 @@ public class BookingTicketDAOImpl implements BookingTicketDAO {
 ////			System.out.println(string);
 ////		}
 //	}
-
+	public static void main(String[] args) {
+	BookingTicketDAO bkservice = new BookingTicketDAOImpl();
+	List<Ticket> items=bkservice.detailTicket(41, 6);
+//	System.out.println(items.size());
+//	for(Ticket i:items){
+//	//System.out.println(i.getStartPlace());
+//	//System.out.println(i.getFinishPlace());
+//	System.out.println(i.getNumberPlate());
+//	System.out.println(i.getPrice());
+//	System.out.println(i.getSeat());
+//	System.out.println("");
+//
+//	}
+//	bkservice.cancelBooking(2);
+}
 }

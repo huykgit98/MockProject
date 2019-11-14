@@ -3,9 +3,9 @@ package edu.sgu.bookingsystem.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,6 +23,7 @@ import edu.sgu.bookingsystem.service.ScheduleService;
 import edu.sgu.bookingsystem.service.impl.BookingTicketServiceImpl;
 import edu.sgu.bookingsystem.service.impl.PlaceServiceImpl;
 import edu.sgu.bookingsystem.service.impl.ScheduleServiceImpl;
+import edu.sgu.bookingsystem.utils.MapSeat;
 
 
 @WebServlet(name = "SeatsController", urlPatterns = {"/SeatsController"})
@@ -42,7 +43,8 @@ public class SeatsController extends HttpServlet {
 				BookingTicketService bookingTicketService = new BookingTicketServiceImpl();
 
 				List<Ticket> listSeat = new ArrayList<Ticket>();
-
+				List<MapSeat> listSeat1 = new ArrayList<MapSeat>();
+				
 				
 				String start_place = request.getParameter("startplace");
 				String finish_place = request.getParameter("finishplace");
@@ -62,10 +64,10 @@ public class SeatsController extends HttpServlet {
 //					if(finish_place!=null&&start_place!=null&&date_start!=null&&time_start!=null)
 //					{
 
-					listSeat = bookingTicketService.getSeatsBySchedule(Long.valueOf(start_place),Long.valueOf(finish_place),date_start,time);
+					listSeat1 = bookingTicketService.getSeatListBySchedule(Long.valueOf(start_place),Long.valueOf(finish_place),date_start,time);
 
 					//	listSeat = bookingTicketService.getSeatsBySchedule(1,7,"2019-11-11","20:00:00");
-			            String jsonListSeat = Obj.writeValueAsString(listSeat); 
+			            String jsonListSeat = Obj.writeValueAsString(listSeat1); 
    			            response.setContentType("application/json");
 			            response.setCharacterEncoding("UTF-8");
 						response.getWriter().write(jsonListSeat);
@@ -97,7 +99,8 @@ public class SeatsController extends HttpServlet {
 		BookingTicketService bookingTicketService = new BookingTicketServiceImpl();
 
 		List<Ticket> listSeat = new ArrayList<Ticket>();
-
+		List<MapSeat> listSeat1 = new ArrayList<MapSeat>();
+		HashMap<String,String> listSeat2;
 		
 		
 
@@ -112,8 +115,11 @@ public class SeatsController extends HttpServlet {
 
 			//listSeat = bookingTicketService.getSeatsBySchedule(1,7,3,time);
 
-				listSeat = bookingTicketService.getSeatsBySchedule(2,1,"2019-11-13","06:00:00");
-	            String jsonListSeat = Obj.writeValueAsString(listSeat); 
+        	listSeat1 = bookingTicketService.getSeatListBySchedule(1,7,"2019-11-20","20:30:00");
+        	//listSeat2 = bookingTicketService.getSeatListHashmapBySchedule(1,7,"2019-11-20","20:30:00");
+
+	            String jsonListSeat = Obj.writeValueAsString(listSeat1); 
+	           // JSONArray ja = new JSONArray();
 	            System.out.println(jsonListSeat);
 
 //            }
